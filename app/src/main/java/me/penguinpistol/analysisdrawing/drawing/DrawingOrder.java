@@ -19,7 +19,7 @@ public class DrawingOrder {
 
     public void draw(Canvas canvas, float fraction) {
         for(DrawingObject object : drawingObjects) {
-            object.draw(canvas, fraction);
+            object.draw(canvas, playTime, fraction);
         }
     }
 

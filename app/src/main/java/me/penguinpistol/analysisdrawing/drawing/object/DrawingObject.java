@@ -16,9 +16,5 @@ public abstract class DrawingObject {
         paint.setColor(color);
     }
 
-    public abstract void draw(Canvas canvas, float fraction);
-
-    public void setInterpolator(BaseInterpolator interpolator) {
-        this.interpolator = interpolator;
-    }
+    public abstract void draw(Canvas canvas, long playTime, float fraction);
 }

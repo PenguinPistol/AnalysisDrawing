@@ -3,13 +3,10 @@ package me.penguinpistol.analysisdrawing.drawing.object;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
-import android.graphics.Interpolator;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Shader;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.OvershootInterpolator;
 
 import androidx.annotation.IntDef;
 
@@ -25,8 +22,7 @@ public class Line extends DrawingObject {
     public static final int SHARP = 1;
     public static final int DASH = 2;
 
-    private final PointF p1, p2, cp;
-
+    protected final PointF p1, p2, cp;
 
     public Line(float x1, float y1, float x2, float y2, int color, float thickness) {
         this(x1, y1, x2, y2, color, thickness, SOLID);
@@ -65,7 +61,7 @@ public class Line extends DrawingObject {
     }
 
     @Override
-    public void draw(Canvas canvas, float fraction) {
+    public void draw(Canvas canvas, long playTime, float fraction) {
         if(interpolator != null) {
             fraction = interpolator.getInterpolation(fraction);
         }
