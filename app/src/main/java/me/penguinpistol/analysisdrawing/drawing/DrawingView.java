@@ -1,6 +1,7 @@
 package me.penguinpistol.analysisdrawing.drawing;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,7 +9,6 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.animation.AccelerateInterpolator;
 
 import androidx.annotation.NonNull;
 
@@ -19,8 +19,23 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
     private final Rect mViewRect;
 
     private RenderThread mRenderThread;
+    private boolean mIsRender;
 
-    Paint paint;
+    private long mDrawingStartTime;
+    private boolean mIsOrderFinished;
+
+    private Bitmap mBitmap;
+    private List<DrawingOrder> mDrawingOrders;
+    private long mTotalPlayTime;
+    private long mCurrentPlayTime;
+
+    private final Paint mGridPaint;
+    private boolean mIsShowGrid = true;
+    private int mGridColumnCount = 15;
+    private float mGridCellSize;
+
+    /////////////////////////////////////////////////////
+    private final Paint debugPaint;
 
     public DrawingView(Context context) {
         this(context, null, 0);
@@ -38,33 +53,42 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
 
         mViewRect = new Rect();
 
-        paint = new Paint();
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.WHITE);
-        paint.setTextSize(12 * getResources().getDisplayMetrics().density);
+        mGridPaint = new Paint();
+        mGridPaint.setStyle(Paint.Style.STROKE);
+        mGridPaint.setColor(Color.parseColor("#4DFFFFFF"));
+        mGridPaint.setStrokeWidth(2 * getResources().getDisplayMetrics().density);
+
+        debugPaint = new Paint();
+        debugPaint.setStyle(Paint.Style.FILL);
+        debugPaint.setColor(Color.WHITE);
+        debugPaint.setTextSize(12 * getResources().getDisplayMetrics().density);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         getDrawingRect(mViewRect);
+
+        if(mGridColumnCount > 0) {
+            mGridCellSize = (float)getMeasuredWidth() / mGridColumnCount;
+        }
     }
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
+        mIsRender = true;
+        mIsOrderFinished = false;
         mRenderThread = new RenderThread();
         mRenderThread.start();
     }
 
     @Override
     public void surfaceChanged(@NonNull SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-        if(mRenderThread != null && mRenderThread.isInterrupted()) {
-            mRenderThread.start();
-        }
     }
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
+        mIsRender = false;
         try {
             mRenderThread.join();
         } catch (InterruptedException e) {
@@ -72,12 +96,9 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    private long mDrawingStartTime;
-    private boolean mIsOrderFinished;
-
-    private List<DrawingOrder> mDrawingOrders;
-    private long totalPlayTime;
-    private long currentPlayTime;
+    public void setImage(Bitmap bitmap) {
+        mBitmap = bitmap;
+    }
 
     public void startOrders(List<DrawingOrder> orders) {
         if(orders == null || orders.size() == 0) {
@@ -85,9 +106,9 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
         }
         mDrawingOrders = orders;
 
-        totalPlayTime = orders.stream().mapToLong(DrawingOrder::getTotalPlayTime).max().orElse(0);
+        mTotalPlayTime = orders.stream().mapToLong(DrawingOrder::getTotalPlayTime).max().orElse(0);
         mDrawingStartTime = System.currentTimeMillis();
-        currentPlayTime = 0;
+        mCurrentPlayTime = 0;
 
         mIsOrderFinished = false;
     }
@@ -97,34 +118,46 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
         @Override
         public void run() {
             Canvas canvas;
-            while(true) {
+            while(mIsRender) {
                 if(!mIsOrderFinished) {
                     canvas = mHolder.lockCanvas(mViewRect);
                     try {
                         synchronized (mHolder) {
-                            canvas.drawColor(Color.BLACK);
+                            // drawing background
+                            if(mBitmap != null) {
+                                canvas.drawBitmap(mBitmap, null, mViewRect, null);
+                            } else {
+                                canvas.drawColor(Color.BLACK);
+                            }
 
-                            currentPlayTime = System.currentTimeMillis() - mDrawingStartTime;
-                            canvas.drawText(String.valueOf(currentPlayTime), 50, 50, paint);
+                            // drawing grid
+                            if(mIsShowGrid) {
+                                for (int i = 0; i < mGridColumnCount; i++) {
+                                    canvas.drawLine(mGridCellSize * i, 0, mGridCellSize * i, mViewRect.bottom, mGridPaint);
+                                    canvas.drawLine(0, mGridCellSize * i, mViewRect.right, mGridCellSize * i, mGridPaint);
+                                }
+                            }
+
+                            mCurrentPlayTime = System.currentTimeMillis() - mDrawingStartTime;
+                            canvas.drawText(String.valueOf(mCurrentPlayTime), 50, 50, debugPaint);
 
                             if(mDrawingOrders != null) {
                                 for (int i = 0; i < mDrawingOrders.size(); i++) {
                                     DrawingOrder order = mDrawingOrders.get(i);
                                     float fraction = 0;
 
-                                    if(currentPlayTime >= order.getDelay()) {
-                                        fraction = Math.min(1.0F, (float)(currentPlayTime - order.getDelay()) / order.getPlayTime());
+                                    if(mCurrentPlayTime >= order.getDelay()) {
+                                        fraction = Math.min(1.0F, (float)(mCurrentPlayTime - order.getDelay()) / order.getPlayTime());
                                     }
 
-                                    canvas.drawText(order.getDelay() + " -> " + order.getPlayTime() + " / " + fraction, 50, 100 + 50 * i, paint);
+                                    canvas.drawText(order.getDelay() + " -> " + order.getPlayTime() + " / " + fraction, 50, 100 + 50 * i, debugPaint);
                                     mDrawingOrders.get(i).draw(canvas, fraction);
                                 }
                             }
 
-                            if(currentPlayTime > totalPlayTime) {
+                            if(mCurrentPlayTime > mTotalPlayTime) {
                                 mIsOrderFinished = true;
                             }
-
                         }
                     } finally {
                         if (canvas == null) {

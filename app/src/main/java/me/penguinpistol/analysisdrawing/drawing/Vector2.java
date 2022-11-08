@@ -1,55 +1,111 @@
 package me.penguinpistol.analysisdrawing.drawing;
 
 import androidx.annotation.NonNull;
+import androidx.core.math.MathUtils;
 
 import java.util.Locale;
 
 public final class Vector2 {
-    public static Vector2 TOP = new Vector2(0, 1);
-    public static Vector2 LEFT = new Vector2(-1, 0);
+    public static float TO_RADIANS = (1 / 180F) * (float) Math.PI;
+    public static float TO_DEGREES = (1 / (float) Math.PI) * 180;
 
     public float x;
     public float y;
+
+    public Vector2() {
+        this(0, 0);
+    }
+
+    public Vector2(@NonNull Vector2 other) {
+        this(other.x, other.y);
+    }
 
     public Vector2(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public static Vector2 rotate(Vector2 vector, float degree) {
-        double rad = Math.toRadians(degree);
-        return new Vector2((float)(vector.x * Math.cos(rad) - vector.y * Math.sin(rad)), (float)(vector.x * Math.sin(rad) + vector.y * Math.cos(rad)));
-    }
-
-    public Vector2 mul(float scala) {
-        x *= scala;
-        y *= scala;
+    public Vector2 set(float x, float y) {
+        this.x = x;
+        this.y = y;
         return this;
     }
 
-    public static Vector2 sum(Vector2 left, Vector2 right) {
-        return new Vector2(left.x + right.x, left.y + right.y);
+    public Vector2 set(@NonNull Vector2 other) {
+        return set(other.x, other.y);
     }
 
-    public static Vector2 sub(Vector2 left, Vector2 right) {
-        return new Vector2(left.x - right.x, left.y - right.y);
+    public Vector2 add(float x, float y) {
+        this.x += x;
+        this.y += y;
+        return this;
     }
 
-    public static Vector2 normalize(Vector2 target) {
-        return new Vector2(target.x / target.magnitude(), target.y / target.magnitude());
+    public Vector2 add(@NonNull Vector2 other) {
+        return add(other.x, other.y);
     }
 
-    public static float dot(Vector2 left, Vector2 right) {
-        return (left.x * right.x) + (left.y * right.y);
+    public Vector2 sub(float x, float y) {
+        this.x -= x;
+        this.y -= y;
+        return this;
     }
 
-    public float magnitude() {
+    public Vector2 sub(@NonNull Vector2 other) {
+        return sub(other.x, other.y);
+    }
+
+    public Vector2 mul(float scalar) {
+        this.x *= scalar;
+        this.y *= scalar;
+        return this;
+    }
+
+    public float length() {
         return (float)Math.sqrt(x * x + y * y);
+    }
+
+    public Vector2 normalize() {
+        float length = length();
+        if(length != 0) {
+            this.x /= length;
+            this.y /= length;
+        }
+        return this;
+    }
+
+    public float angle() {
+        float angle = (float) Math.atan2(y, x) * TO_DEGREES;
+        if(angle < 0) {
+            angle += 360;
+        }
+        return angle;
+    }
+
+    public Vector2 rotate(float degree) {
+        float radians = degree * TO_RADIANS;
+        float cos = (float) Math.cos(radians);
+        float sin = (float) Math.sin(radians);
+        return set(this.x * cos - this.y * sin, this.x * sin + this.y * cos);
+    }
+
+    public float distance(float x, float y) {
+        float distX = this.x - x;
+        float distY = this.y - y;
+        return (float) Math.sqrt((distX * distY) + (distY * distY));
+    }
+
+    public float distance(@NonNull Vector2 other) {
+        return distance(other.x, other.y);
+    }
+
+    public float dot(@NonNull Vector2 other) {
+        return (this.x * other.x) + (this.y * other.y);
     }
 
     @NonNull
     @Override
     public String toString() {
-        return String.format(Locale.getDefault(), "(%.3f, %.3f)", x, y);
+        return String.format(Locale.getDefault(), "Vector2:[%.2f, %.2f]", x, y);
     }
 }

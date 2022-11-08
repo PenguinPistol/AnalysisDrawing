@@ -1,10 +1,21 @@
 package me.penguinpistol.analysisdrawing;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +28,7 @@ import me.penguinpistol.analysisdrawing.drawing.object.DrawingObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.JointLine;
 import me.penguinpistol.analysisdrawing.drawing.object.Shape;
+import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,14 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         List<DrawingOrder> orders = new ArrayList<>();
 
-        float thickness = 1 * getResources().getDisplayMetrics().density;
-        float radius = 10 * getResources().getDisplayMetrics().density;
+        float density = getResources().getDisplayMetrics().density;
+        float thickness = 1 * density;
+        float radius = 10 * density;
 
         List<DrawingObject> order1 = new ArrayList<>();
         order1.add(new Line(100, 100, 500, 100, Color.WHITE, thickness, Line.SHARP));
         order1.add(new Line(100, 600, 500, 600, Color.BLUE, thickness, Line.DASH));
         order1.add(new Arrow(100, 800, 500, 700, Color.GREEN));
         order1.add(new Circle(Color.MAGENTA, Color.WHITE, 500, 500, radius));
+        order1.add(new Text(500, 500, "This is\ntest", Color.RED, 20 * density, Text.Anchor.CENTER_BOTTOM));
 
         List<PointF> shape = new ArrayList<>();
         shape.add(new PointF(100, 100));
@@ -67,6 +81,25 @@ public class MainActivity extends AppCompatActivity {
 
         orders.add(new DrawingOrder(order1, 0, 500));
         orders.add(new DrawingOrder(order2, 500, 1000));
+
+        Glide.with(this)
+                .asBitmap()
+                .load(BitmapFactory.decodeResource(getResources(), R.drawable.test1))
+                .centerCrop()
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        binding.drawing.setImage(resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                        binding.drawing.setImage(null);
+                    }
+                });
+
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test1);
+//        binding.drawing.setImage(bitmap);
 
         binding.btnTest.setOnClickListener(v -> {
             binding.drawing.startOrders(orders);

@@ -13,6 +13,8 @@ import androidx.annotation.IntDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import me.penguinpistol.analysisdrawing.drawing.Vector2;
+
 public class Line extends DrawingObject {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({SOLID, SHARP, DASH})
@@ -22,7 +24,8 @@ public class Line extends DrawingObject {
     public static final int SHARP = 1;
     public static final int DASH = 2;
 
-    protected final PointF p1, p2, cp;
+    protected final PointF cp;
+    protected final Vector2 v1, v2;
 
     public Line(float x1, float y1, float x2, float y2, int color, float thickness) {
         this(x1, y1, x2, y2, color, thickness, SOLID);
@@ -38,8 +41,8 @@ public class Line extends DrawingObject {
                 (y1 + y2) * 0.5F
         );
 
-        p1 = new PointF(x1 - cp.x, y1 - cp.y);
-        p2 = new PointF(x2 - cp.x, y2 - cp.y);
+        v1 = new Vector2(x1, y1).sub(cp.x, cp.y);
+        v2 = new Vector2(x2, y2).sub(cp.x, cp.y);
 
         switch(type) {
             case SOLID:
@@ -66,10 +69,10 @@ public class Line extends DrawingObject {
             fraction = interpolator.getInterpolation(fraction);
         }
         canvas.drawLine(
-                (p1.x * fraction) + cp.x,
-                (p1.y * fraction) + cp.y,
-                (p2.x * fraction) + cp.x,
-                (p2.y * fraction) + cp.y,
+                (v1.x * fraction) + cp.x,
+                (v1.y * fraction) + cp.y,
+                (v2.x * fraction) + cp.x,
+                (v2.y * fraction) + cp.y,
                 paint
         );
     }

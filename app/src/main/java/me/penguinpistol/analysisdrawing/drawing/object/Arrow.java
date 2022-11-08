@@ -18,8 +18,8 @@ public class Arrow extends DrawingObject {
 
         cp = new PointF((x1 + x2) * 0.5F, (y1 + y2) * 0.5F);
 
-        v1 = Vector2.sub(new Vector2(x1, y1), new Vector2(cp.x, cp.y));
-        v2 = Vector2.sub(new Vector2(x2, y2), new Vector2(cp.x, cp.y));
+        v1 = new Vector2(x1, y1).sub(cp.x, cp.y);
+        v2 = new Vector2(x2, y2).sub(cp.x, cp.y);
     }
 
     @Override
