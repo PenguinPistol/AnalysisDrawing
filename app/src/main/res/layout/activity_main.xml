@@ -11,11 +11,11 @@
         android:id="@+id/card_drawing"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <me.penguinpistol.analysisdrawing.drawing.DrawingView
             android:id="@+id/drawing"
@@ -24,12 +24,103 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_label_text_align"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/card_drawing"
+        android:textSize="16dp"
+        android:text="Text Align"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/group_align"
+        app:layout_constraintTop_toBottomOf="@id/tv_label_text_align">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_align_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="LEFT"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_align_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CENTER"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_align_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RIGHT"/>
+
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_label_text_anchor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/group_align"
+        android:textSize="16dp"
+        android:text="Text Anchor"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/group_anchor"
+        app:layout_constraintTop_toBottomOf="@id/tv_label_text_anchor">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_anchor_lt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="LT"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_anchor_lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LB"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_anchor_ct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CT"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_anchor_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CB"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_anchor_rt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RT"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_anchor_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RB"/>
+
+    </RadioGroup>
+
     <Button
         android:id="@+id/btn_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="start"
-        app:layout_constraintTop_toBottomOf="@id/card_drawing"/>
+        android:text="start drawing"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,6 @@ public class Shape extends DrawingObject {
 
     private final RectF bounds;
     private final Matrix matrix;
-    private final int alpha;
 
     public Shape(int color, List<PointF> points) {
         this(color, points, ALPHA);
@@ -48,7 +47,16 @@ public class Shape extends DrawingObject {
         path = new Path();
         bounds = new RectF();
         matrix = new Matrix();
-        alpha = paint.getAlpha();
+
+        for(int i = 0; i < points.size(); i++) {
+            PointF p = points.get(i);
+            if(i == 0) {
+                path.moveTo(p.x, p.y);
+            } else {
+                path.lineTo(p.x, p.y);
+            }
+        }
+        path.close();
 
         interpolator = new AccelerateInterpolator();
     }
@@ -59,16 +67,6 @@ public class Shape extends DrawingObject {
             return;
         }
 
-        path.reset();
-        for(int i = 0; i < points.size(); i++) {
-            PointF p = points.get(i);
-            if(i == 0) {
-                path.moveTo(p.x, p.y);
-            } else {
-                path.lineTo(p.x, p.y);
-            }
-        }
-        path.close();
         switch(animationType) {
             case NONE:
                 break;

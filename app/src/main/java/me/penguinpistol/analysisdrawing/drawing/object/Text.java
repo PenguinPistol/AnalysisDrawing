@@ -5,16 +5,19 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.view.animation.DecelerateInterpolator;
 
 import java.util.Arrays;
 
 public class Text extends DrawingObject {
+    private static final int TRANSLATE_Y = 50;
+
     private final String[] texts;
     private final Rect[] bounds;
     private final Align align;
     private final Anchor anchor;
+    private final PointF point;
 
-    private PointF point;
     private float maxWidth;
     private float maxHeight;
 
@@ -30,7 +33,13 @@ public class Text extends DrawingObject {
         this.texts = text.split("\n");
         this.bounds = new Rect[texts.length];
 
+        interpolator = new DecelerateInterpolator();
+
         calculateTextBounds();
+    }
+
+    public Text(float x, float y, String text, int color, float textSize) {
+        this(x, y, text, color, textSize, Align.LEFT, Anchor.LEFT_TOP);
     }
 
     public Text(float x, float y, String text, int color, float textSize, Align align) {
@@ -43,37 +52,50 @@ public class Text extends DrawingObject {
 
     @Override
     public void draw(Canvas canvas, long playTime, float fraction) {
+        if(texts == null) {
+            return;
+        }
+
+        if(interpolator != null) {
+            fraction = interpolator.getInterpolation(fraction);
+        }
+
+        float translateY = TRANSLATE_Y * (1F - fraction);
+        paint.setAlpha((int)(alpha * fraction));
+
         for (int i = 0; i < texts.length; i++) {
+            float remainingSpace = (maxWidth - bounds[i].width());
             float x = 0;
             float y = 0;
+
             switch (anchor) {
                 case LEFT_TOP:
-                    x = point.x;
+                    x = point.x + (remainingSpace * align.value);
                     y = point.y + maxHeight * (i+1);
                     break;
                 case LEFT_BOTTOM:
-                    x = point.x;
+                    x = point.x + (remainingSpace * align.value);
                     y = point.y - maxHeight * (texts.length - (i+1));
                     break;
                 case RIGHT_TOP:
-                    x = point.x - bounds[i].width();
+                    x = point.x - bounds[i].width() - (remainingSpace * (1F - align.value));
                     y = point.y + maxHeight * (i+1);
                     break;
                 case RIGHT_BOTTOM:
-                    x = point.x - bounds[i].width();
+                    x = point.x - bounds[i].width() - (remainingSpace * (1F - align.value));
                     y = point.y - maxHeight * (texts.length - (i+1));
                     break;
                 case CENTER_TOP:
-                    x = point.x - bounds[i].centerX();
+                    x = point.x - bounds[i].centerX() + (remainingSpace * (align.value - 0.5F));
                     y = point.y + maxHeight * (i+1);
                     break;
                 case CENTER_BOTTOM:
-                    x = point.x - bounds[i].centerX();
+                    x = point.x - bounds[i].centerX() + (remainingSpace * (align.value - 0.5F));
                     y = point.y - maxHeight * (texts.length - (i+1));
                     break;
             }
 
-            canvas.drawText(texts[i], x, y, paint);
+            canvas.drawText(texts[i], x, y + translateY, paint);
         }
     }
 
@@ -88,27 +110,28 @@ public class Text extends DrawingObject {
             paint.getTextBounds(texts[i], 0, texts[i].length(), bounds[i]);
         }
         maxWidth = Arrays.stream(bounds).mapToInt(Rect::width).max().orElse(0);
-        maxHeight = Arrays.stream(bounds).mapToInt(Rect::height).max().orElse(0);
+        maxHeight = paint.getFontMetrics(new Paint.FontMetrics());
     }
 
     public enum Align {
-        LEFT(-1),
-        CENTER(0),
-        RIGHT(1);
+        LEFT(0.0F),
+        CENTER(0.5F),
+        RIGHT(1.0F);
 
-        final int dir;
+        final float value;
 
-        Align(int dir) {
-            this.dir = dir;
+        Align(float value) {
+            this.value = value;
         }
     }
 
     public enum Anchor {
         LEFT_TOP,
         LEFT_BOTTOM,
-        RIGHT_TOP,
-        RIGHT_BOTTOM,
         CENTER_TOP,
-        CENTER_BOTTOM
+        CENTER_BOTTOM,
+        RIGHT_TOP,
+        RIGHT_BOTTOM
+        ;
     }
 }
