@@ -5,7 +5,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.view.animation.OvershootInterpolator;
 
-public class Circle extends DrawingObject {
+public class Circle extends BaseObject {
     private static final float INNER_RADIUS_RATIO = 0.5F;
 
     private final Paint innerPaint;

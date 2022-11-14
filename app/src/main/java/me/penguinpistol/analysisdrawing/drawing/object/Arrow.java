@@ -6,7 +6,7 @@ import android.graphics.PointF;
 
 import me.penguinpistol.analysisdrawing.drawing.Vector2;
 
-public class Arrow extends DrawingObject {
+public class Arrow extends BaseObject {
 
     private final Vector2 v1, v2;
     private final PointF cp;

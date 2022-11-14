@@ -1,0 +1,35 @@
+{
+  "code": "00",
+  "message": "",
+  "data": {
+    "result": "나투 연구소에서 펭피 님의 인공지능(AI)을 통해 피부톤을 분석했습니다.",
+    "default": "펭피 님 피부톤은 내추럴 베이지 입니다.",
+    "hide_detail": "피부톤은 피하 지방 쪽 카로틴 색소, 표피 안 멜라닌 색소, 모세혈관 속 헤모글로빈 색소 이 세 가지가 반영되어 고유한색이 만들어 지는데 이는 유전적인 요인과 살아온 외부 환경에도 영향을 받아요. 피부톤을 알아두면 화장을 하거나 헤어 염색을 할 때, 옷 색상을 고르거나 액세서리나 향수를 선택할 때도 본인에게 어울리는 색상을 고르는 데 도움이 됩니다.",
+    "lab_origin": {
+      "data": {
+        "skinWithPanton": {
+          "pantone_standard_rgb": "#c39990",
+          "pantone_standard_tone": "cool",
+          "pantone_standard_colorCode": 3
+        },
+        "details": {
+          "skinColorLevel": 3
+        },
+        "partAllScore": {
+          "skinColorLevel": 3,
+          "skinAllScoreSkinColorLevel": 3
+        }
+      },
+      "messagse": "성공",
+      "result_code": 200
+    },
+    "extras": [
+      {
+        "code_name": "피부톤",
+        "code_value": "skinColorLevel",
+        "order": 6,
+        "data": "펭피 님은 내추럴 베이지 톤이네요. 동양인에게 가장 많은 피부 톤으로 파운데이션 21호보다는 조금 어두운 23호에 가까운 건강한 피부색입니다. 헤모글로빈 수치에 따라서 웜톤과 쿨톤으로 나뉘어요. 피부가 칙칙해 보이지 않도록 자외선 차단과 수분 관리에 신경 써주는 게 좋아요. 이미 어두워진 피부톤울 개선하고 싶다면 미백관리와 미백레이저가 도움이 될 수 있습니다."
+      }
+    ]
+  }
+}

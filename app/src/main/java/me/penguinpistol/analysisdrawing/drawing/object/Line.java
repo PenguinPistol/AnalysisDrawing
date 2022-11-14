@@ -7,6 +7,7 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Shader;
+import android.view.animation.AccelerateInterpolator;
 
 import androidx.annotation.IntDef;
 
@@ -15,7 +16,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import me.penguinpistol.analysisdrawing.drawing.Vector2;
 
-public class Line extends DrawingObject {
+public class Line extends BaseObject {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({SOLID, SHARP, DASH})
     public @interface ShapeType {}
@@ -61,6 +62,13 @@ public class Line extends DrawingObject {
                 paint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 10));
                 break;
         }
+
+        interpolator = new AccelerateInterpolator(0.6F);
+    }
+
+    public Line setDashConfig(float interval, float phase) {
+        this.paint.setPathEffect(new DashPathEffect(new float[]{ interval, interval }, phase));
+        return this;
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.graphics.PointF;
 
 import java.util.List;
 
-public class JointLine extends DrawingObject {
+public class JointLine extends BaseObject {
 
     private final List<PointF> points;
     private final float sectionFraction;

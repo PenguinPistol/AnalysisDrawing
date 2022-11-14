@@ -6,17 +6,17 @@ import android.view.animation.BaseInterpolator;
 
 import androidx.annotation.ColorInt;
 
-public abstract class DrawingObject {
+public abstract class BaseObject {
     protected Paint paint;
     protected BaseInterpolator interpolator;
-    protected int alpha;
+    protected int originAlpha;
 
-    public DrawingObject(@ColorInt int color) {
+    public BaseObject(@ColorInt int color) {
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(color);
 
-        alpha = paint.getAlpha();
+        originAlpha = paint.getAlpha();
     }
 
     public abstract void draw(Canvas canvas, long playTime, float fraction);

@@ -15,7 +15,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
-public class Shape extends DrawingObject {
+public class Shape extends BaseObject {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({NONE, SCALE, ALPHA})
     public @interface AnimationType {}
@@ -76,7 +76,7 @@ public class Shape extends DrawingObject {
                 path.transform(matrix);
                 break;
             case ALPHA:
-                paint.setAlpha((int)(alpha * fraction));
+                paint.setAlpha((int)(originAlpha * fraction));
                 break;
         }
 

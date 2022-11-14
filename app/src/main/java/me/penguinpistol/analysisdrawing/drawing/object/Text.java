@@ -9,7 +9,7 @@ import android.view.animation.DecelerateInterpolator;
 
 import java.util.Arrays;
 
-public class Text extends DrawingObject {
+public class Text extends BaseObject {
     private static final int TRANSLATE_Y = 50;
 
     private final String[] texts;
@@ -61,7 +61,7 @@ public class Text extends DrawingObject {
         }
 
         float translateY = TRANSLATE_Y * (1F - fraction);
-        paint.setAlpha((int)(alpha * fraction));
+        paint.setAlpha((int)(originAlpha * fraction));
 
         for (int i = 0; i < texts.length; i++) {
             float remainingSpace = (maxWidth - bounds[i].width());

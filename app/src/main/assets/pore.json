@@ -1,0 +1,211 @@
+{
+  "code": "00",
+  "message": "",
+  "data": {
+    "result": "나투연구소에서 펭피 님 얼굴의 부위별 모공과 블랙헤드 상태를 분석했습니다.",
+    "default": "펭피 님 피부에 눈에 띄는 모공이 이마에 없고 눈썹 사이에는 없고 오른쪽 볼에는 없는 편이며 왼쪽 볼에는 없네요. 블랙헤드는 12 개 입니다.",
+    "hide_detail": "모공은 피지가 피부 표면으로 나오는 통로입니다. 모공의 크기는 유전적으로 다른데,  피지선이 과도하게 분비되거나  노화로 인해  탄력이 떨어지면 모공 크기는 더 커지는 경향이 있어요. 모공에 각질과 환경 오염물이 모공 수축 문제가 생기고 시간이 지나면서 블랙헤드나 여드름이 되기도 합니다. 모공은 한번 커지면 줄이기 힘드니 평소 피부 유수분 밸런스를 유지하고, 모공 길이 막히지 않게 각질 제거와 딥클렌징으로 과다 피지 분비를 막아 모공을 깨끗하게 하고 모공수축이 될 수 있게 해주세요. 자외선 차단과 피부온도를 낮춰 주는 것도 모공 크기가 커지는 것을 예방하는 방법이에요. 모공관리와 블랙헤드 관리가 어려운 경우에 피부과를 찾아 모공레이저, 색소레이저, 고주파 시술, 필링, 피부 스케일링으로 모공을 개선할 수 있습니다.",
+    "lab_origin": {
+      "lab_black_pore": {
+        "data": {
+          "details": {
+            "pore": {
+              "blackHeadsLocation": [
+                {
+                  "top": 681,
+                  "left": 361.99997,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 686.99994,
+                  "left": 321,
+                  "width": 2,
+                  "height": 3
+                },
+                {
+                  "top": 690,
+                  "left": 363,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 694,
+                  "left": 328,
+                  "width": 1,
+                  "height": 3
+                },
+                {
+                  "top": 701.99994,
+                  "left": 314,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 706,
+                  "left": 337,
+                  "width": 1,
+                  "height": 2
+                },
+                {
+                  "top": 708.00006,
+                  "left": 311,
+                  "width": 3,
+                  "height": 2
+                },
+                {
+                  "top": 716,
+                  "left": 328,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 719,
+                  "left": 315,
+                  "width": 5,
+                  "height": 2
+                },
+                {
+                  "top": 719,
+                  "left": 372,
+                  "width": 2,
+                  "height": 3
+                },
+                {
+                  "top": 729,
+                  "left": 336,
+                  "width": 2,
+                  "height": 1
+                },
+                {
+                  "top": 739,
+                  "left": 376,
+                  "width": 3,
+                  "height": 2
+                }
+              ]
+            },
+            "blackHeads": {
+              "location": [
+                {
+                  "top": 681,
+                  "left": 361.99997,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 686.99994,
+                  "left": 321,
+                  "width": 2,
+                  "height": 3
+                },
+                {
+                  "top": 690,
+                  "left": 363,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 694,
+                  "left": 328,
+                  "width": 1,
+                  "height": 3
+                },
+                {
+                  "top": 701.99994,
+                  "left": 314,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 706,
+                  "left": 337,
+                  "width": 1,
+                  "height": 2
+                },
+                {
+                  "top": 708.00006,
+                  "left": 311,
+                  "width": 3,
+                  "height": 2
+                },
+                {
+                  "top": 716,
+                  "left": 328,
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "top": 719,
+                  "left": 315,
+                  "width": 5,
+                  "height": 2
+                },
+                {
+                  "top": 719,
+                  "left": 372,
+                  "width": 2,
+                  "height": 3
+                },
+                {
+                  "top": 729,
+                  "left": 336,
+                  "width": 2,
+                  "height": 1
+                },
+                {
+                  "top": 739,
+                  "left": 376,
+                  "width": 3,
+                  "height": 2
+                }
+              ],
+              "value": 12
+            }
+          },
+          "partAllScore": {
+            "poresCheeksRightValue": 0,
+            "poresBetweenBrowHaveValue": 0,
+            "poresForeheadHaveValue": 0,
+            "blackHeadsArea": 0.010515,
+            "poresCheeksLeftValue": 0
+          }
+        },
+        "messagse": "성공",
+        "result_code": 200
+      },
+      "lab_graph": {
+        "data": {
+          "skinAcneState": "sp01",
+          "blackHeads": {
+            "state": "sp02",
+            "value": 12
+          },
+          "skinPimpleState": "sp01",
+          "skinMole": 1,
+          "skinMoleState": "sp01",
+          "skinSpot": 69,
+          "skinSpotState": "sp03",
+          "skinPimple": 0,
+          "skinAcne": 3
+        },
+        "messagse": "성공",
+        "result_code": 200
+      }
+    },
+    "extras": [
+      {
+        "code_name": "모공",
+        "code_value": "blackPore",
+        "order": 6,
+        "data": "펭피 님 눈에 띄는 모공이 있는 것으로 보입니다. 평소 피부 유수분 밸런스를 유지하고 각질제거, 딥클렌징으로 모공을 깨끗하게 관리해줘야 해요. 볼이 처지고 모공이 사선으로 늘어져 피부 탄력이 떨어진다면 피부과 고주파 레이저 시술을 고려해 볼 수 있어요. 모공 부위의 반복적인 염증으로 색소침착이 생긴 부위에는 모공레이저나 색소레이저가 도움이 될 수 있고, 모공의 검은 털은 제모레이저로 제거할 수 있습니다."
+      },
+      {
+        "code_name": "블랙해드",
+        "code_value": "blackHead",
+        "order": 6,
+        "data": "펭피 님의 블랙헤드 개수는 대략 12 개로 보이며 약간 있는 편입니다. 블랙헤드는 모공 속에 쌓인 노폐물이 달라붙어 검게 변한 피지입니다. 블랙헤드 제거를 위해 손으로 짜거나 자극을 주면 블랙헤드가 퍼지거나 오히려 악화될 수 있어요. 블랙헤드를 방치하면 넓게 퍼지거나 악화될 수 있고, 모공이 넓어질 수 있으니 피부과를 찾아 피부스케일링, 필링, 모공축소 레이저 시술을 받는 것도 좋은 방법입니다."
+      }
+    ]
+  }
+}
