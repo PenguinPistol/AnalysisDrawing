@@ -28,6 +28,14 @@ public class Line extends BaseObject {
     protected final PointF cp;
     protected final Vector2 v1, v2;
 
+    public Line(PointF p1, PointF p2, int color, float thickness) {
+        this(p1.x, p1.y, p2.x, p2.y, color, thickness, SOLID);
+    }
+
+    public Line(PointF p1, PointF p2, int color, float thickness, @ShapeType int type) {
+        this(p1.x, p1.y, p2.x, p2.y, color, thickness, SOLID);
+    }
+
     public Line(float x1, float y1, float x2, float y2, int color, float thickness) {
         this(x1, y1, x2, y2, color, thickness, SOLID);
     }

@@ -5,7 +5,6 @@ import android.graphics.PointF;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
-import androidx.annotation.Size;
 
 import com.google.gson.JsonElement;
 
@@ -13,7 +12,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
@@ -37,8 +35,9 @@ public abstract class BaseDrawingModel {
     protected final List<PointF> landmark171;
     protected final List<Order> orders;
 
-    protected float lineThickness;
     protected float infoTextSize;
+    protected float defaultThickness;
+    protected float defaultTextSize;
 
     public BaseDrawingModel(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         this.landmark118 = landmark118;
@@ -47,16 +46,17 @@ public abstract class BaseDrawingModel {
 
         float density = context.getResources().getDisplayMetrics().density;
         infoTextSize = DrawingConfig.INFO_TEXT_SIZE * density;
-        lineThickness = DrawingConfig.LINE_THICKNESS * density;
+        defaultThickness = DrawingConfig.LINE_THICKNESS * density;
+        defaultTextSize = DrawingConfig.TEXT_SIZE * density;
 
         // TODO parseJson 내부에서 호출하게 변경
-        initOrders();
+        initOrders(context);
     }
 
     /**
      * 드로잉 요소 정의
      */
-    protected abstract void initOrders();
+    protected abstract void initOrders(Context context);
 
     /**
      * 데이터 파싱
@@ -81,7 +81,7 @@ public abstract class BaseDrawingModel {
     /**
      * 랜드마크 포인트의 특정 인덱스들의 x/y축 기준 좌표를 추출
      */
-    protected float[] extractPoints(@Landmark int landmark, @Axis int axis, @Size(min=1) int... indexes) {
+    protected float[] extractCoordinate(@Landmark int landmark, @Axis int axis, int... indexes) {
         if(indexes == null) {
             return new float[0];
         }
@@ -95,6 +95,24 @@ public abstract class BaseDrawingModel {
             }
         }
 
+        return result;
+    }
+
+    /**
+     * 랜드마크 포인트 특정 인덱스 리스트 추출
+     */
+    protected List<PointF> extractPoints(@Landmark int landmark, int... indexes) {
+        if(indexes == null) {
+            return new ArrayList<>();
+        }
+
+        List<PointF> points = landmark == LANDMARK_118 ? landmark118 : landmark171;
+        List<PointF> result = new ArrayList<>();
+        for (int index : indexes) {
+            if (index < points.size()) {
+                result.add(points.get(index));
+            }
+        }
         return result;
     }
 

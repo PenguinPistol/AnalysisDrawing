@@ -14,7 +14,10 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
 import me.penguinpistol.analysisdrawing.databinding.ActivityMainBinding;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
+        Class<? extends BaseDrawingModel>[] models = new Class[] {
+                FaceHorizontalRatio.class,
+                FaceVerticalRatio.class,
+                GoldenTriangle.class
+        };
+
         viewModel.getMeituData(this, analysis -> {
             Glide.with(binding.drawing)
                 .asBitmap()
@@ -37,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                         binding.drawing.setData(resource, analysis.getLandmark118(), analysis.getLandmark171(), null);
-                        binding.drawing.startDrawing(FaceRatio.class);
+                        binding.drawing.startDrawing(models);
                     }
 
                     @Override
