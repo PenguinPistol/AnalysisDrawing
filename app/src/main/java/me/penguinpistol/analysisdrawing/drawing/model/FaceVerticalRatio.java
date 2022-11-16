@@ -56,8 +56,8 @@ public class FaceVerticalRatio extends BaseDrawingModel {
         // 하정길이 텍스트 Y 좌표
         float textY2 = average(middleY, bottomY);
         // 텍스트 크기
-        order2.add(new Text(arrowX1, textY1, "중정길이\n%.2fcm", Color.WHITE, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
-        order2.add(new Text(arrowX2, textY2, "하정길이\n%.2fcm", Color.WHITE, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
+        order2.add(new Text(arrowX1, textY1, "중정길이\n%.2fcm", Color.WHITE, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_CENTER));
+        order2.add(new Text(arrowX2, textY2, "하정길이\n%.2fcm", Color.WHITE, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_CENTER));
 
         orders.add(new Order(order1, 0, 500));
         orders.add(new Order(order2, 600, 500));

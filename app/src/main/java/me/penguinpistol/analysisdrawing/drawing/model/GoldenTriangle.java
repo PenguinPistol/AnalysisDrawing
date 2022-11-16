@@ -61,15 +61,15 @@ public class GoldenTriangle extends BaseDrawingModel {
 
         List<BaseObject> order3 = new ArrayList<>();
         // 삼각형 꼭짓점 텍스트
-        order3.add(new Text(triangle[0], "A\n%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_TOP));
-        order3.add(new Text(triangle[1], "B\n%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.LEFT_TOP));
+        order3.add(new Text(triangle[0], "A\n%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_CENTER));
+        order3.add(new Text(triangle[1], "B\n%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.LEFT_CENTER));
         order3.add(new Text(triangle[2], "P\n%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
 
         // 코 <-> 턱끝 세로 화살표, 텍스트
         float noseToJawArrowX = landmark171.get(143).x;
         order3.add(new Arrow(noseToJawArrowX, noseLineY, noseToJawArrowX, jawLineY, DrawingConfig.LINE_COLOR));
-        order3.add(new Text(noseToJawArrowX, average(noseLineY, jawLineY), "하정길이\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
-        order3.add(getInfoTextObject("A포인트\n%.2f\n\nB포인트\n%.2f\n\nP포인트\n%.2f"));
+        order3.add(new Text(noseToJawArrowX, average(noseLineY, jawLineY), "하정길이\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_CENTER));
+        order3.add(getInfoTextObject("A포인트\n%.2fº\n\nB포인트\n%.2fº\n\nP포인트\n%.2fº"));
 
         orders.add(new Order(order1, 0, 1000));
         orders.add(new Order(order2, 0, 500));
