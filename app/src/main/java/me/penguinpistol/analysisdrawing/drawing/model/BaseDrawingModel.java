@@ -81,7 +81,7 @@ public abstract class BaseDrawingModel {
     /**
      * 랜드마크 포인트의 특정 인덱스들의 x/y축 기준 좌표를 추출
      */
-    protected float[] extractCoordinate(@Landmark int landmark, @Axis int axis, int... indexes) {
+    protected float[] extractCoordinates(@Landmark int landmark, @Axis int axis, int... indexes) {
         if(indexes == null) {
             return new float[0];
         }

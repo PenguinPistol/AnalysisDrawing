@@ -31,15 +31,15 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
         // 가로비율 세로실선 시작 X좌표
         int[] verticalSolidLineXIndex = new int[] { 84, 0, 5, 10, 15, 88 };
         // 좌우 눈꺼풀중 위에 있는 Y좌표
-        float upperEyelidY = min(extractCoordinate(LANDMARK_171, AXIS_Y, 2, 13));
+        float upperEyelidY = min(extractCoordinates(LANDMARK_171, AXIS_Y, 2, 13));
         // 좌우 눈썹, 미간의 Y좌표 평균
-        float averageEyebrowBottomY = average(extractCoordinate(LANDMARK_171, AXIS_Y, 20, 35, 40));
+        float averageEyebrowBottomY = average(extractCoordinates(LANDMARK_171, AXIS_Y, 20, 35, 40));
         // 좌우 턱라인 Y좌표 평균
-        float averageJawlineY = average(extractCoordinate(LANDMARK_171, AXIS_Y, 95, 96, 100, 101));
+        float averageJawlineY = average(extractCoordinates(LANDMARK_171, AXIS_Y, 95, 96, 100, 101));
 
         // 좌우 비율 세로선
         List<BaseObject> order1 = new ArrayList<>();
-        for(float x : extractCoordinate(LANDMARK_171, AXIS_X, verticalSolidLineXIndex)) {
+        for(float x : extractCoordinates(LANDMARK_171, AXIS_X, verticalSolidLineXIndex)) {
             order1.add(new Line(x, averageEyebrowBottomY, x, averageJawlineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.SHARP));
         }
 
@@ -54,18 +54,18 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
         order2.add(getInfoTextObject("이상적인 가로비율\n0.65:1:1:1:0.65\n\n나의 가로비율\n%.2f:%.2f:%.2f:%.2f:%.2f"));
 
         // 눈 너비, 높이, 간격
-        float eyeWidthHeightArrowY = average(extractCoordinate(LANDMARK_171, AXIS_Y, 130, 150));
+        float eyeWidthHeightArrowY = average(extractCoordinates(LANDMARK_171, AXIS_Y, 130, 150));
         order2.add(new Arrow(landmark171.get(0).x, eyeWidthHeightArrowY, landmark171.get(5).x, eyeWidthHeightArrowY, DrawingConfig.LINE_COLOR));
         order2.add(new Arrow(landmark171.get(5).x, landmark171.get(48).y, landmark171.get(10).x, landmark171.get(48).y, DrawingConfig.LINE_COLOR));
         order2.add(new Arrow(landmark171.get(10).x, eyeWidthHeightArrowY, landmark171.get(15).x, eyeWidthHeightArrowY, DrawingConfig.LINE_COLOR));
 
         // TODO Json 파싱 데이터 텍스트 출력
         // 눈높이 X 좌표
-        float textX1 = average(extractCoordinate(LANDMARK_171, AXIS_X, 0, 5));
+        float textX1 = average(extractCoordinates(LANDMARK_171, AXIS_X, 0, 5));
         // 눈간격 X 좌표
-        float textX2 = average(extractCoordinate(LANDMARK_171, AXIS_X, 5, 10));
+        float textX2 = average(extractCoordinates(LANDMARK_171, AXIS_X, 5, 10));
         // 눈너비 X 좌표
-        float textX3 = average(extractCoordinate(LANDMARK_171, AXIS_X, 10, 15));
+        float textX3 = average(extractCoordinates(LANDMARK_171, AXIS_X, 10, 15));
         order2.add(new Text(textX1, eyeWidthHeightArrowY, "눈높이\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
         order2.add(new Text(textX2, landmark171.get(48).y, "눈간격\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
         order2.add(new Text(textX3, eyeWidthHeightArrowY, "눈너비\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));

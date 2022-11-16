@@ -50,6 +50,22 @@ public class Text extends BaseObject {
         this(x, y, text, color, textSize, Align.LEFT, anchor);
     }
 
+    public Text(PointF p, String text, int color, float textSize) {
+        this(p.x, p.y, text, color, textSize, Align.LEFT, Anchor.LEFT_TOP);
+    }
+
+    public Text(PointF p, String text, int color, float textSize, Align align) {
+        this(p.x, p.y, text, color, textSize, align, Anchor.LEFT_TOP);
+    }
+
+    public Text(PointF p, String text, int color, float textSize, Anchor anchor) {
+        this(p.x, p.y, text, color, textSize, Align.LEFT, anchor);
+    }
+
+    public Text(PointF p, String text, int color, float textSize, Align align, Anchor anchor) {
+        this(p.x, p.y, text, color, textSize, align, anchor);
+    }
+
     @Override
     public void draw(Canvas canvas, long playTime, float fraction) {
         if(texts == null) {

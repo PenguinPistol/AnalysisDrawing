@@ -33,8 +33,8 @@ public class FaceVerticalRatio extends BaseDrawingModel {
         float topY = landmark171.get(40).y;
         // 중단 가로실선 좌표
         float middleY = landmark171.get(49).y;
-        float middleStartX = average(extractCoordinate(LANDMARK_171, AXIS_X, 92, 93));
-        float middleEndX = average(extractCoordinate(LANDMARK_171, AXIS_X, 103, 104));
+        float middleStartX = average(extractCoordinates(LANDMARK_171, AXIS_X, 92, 93));
+        float middleEndX = average(extractCoordinates(LANDMARK_171, AXIS_X, 103, 104));
         // 하단 가로실선 Y 좌표
         float bottomY = landmark171.get(98).y;
 
