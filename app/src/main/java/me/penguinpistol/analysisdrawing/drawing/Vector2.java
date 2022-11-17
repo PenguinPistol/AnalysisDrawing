@@ -1,7 +1,8 @@
 package me.penguinpistol.analysisdrawing.drawing;
 
+import android.graphics.PointF;
+
 import androidx.annotation.NonNull;
-import androidx.core.math.MathUtils;
 
 import java.util.Locale;
 
@@ -18,6 +19,10 @@ public final class Vector2 {
 
     public Vector2(@NonNull Vector2 other) {
         this(other.x, other.y);
+    }
+
+    public Vector2(@NonNull PointF p) {
+        this(p.x, p.y);
     }
 
     public Vector2(float x, float y) {
@@ -107,5 +112,9 @@ public final class Vector2 {
     @Override
     public String toString() {
         return String.format(Locale.getDefault(), "Vector2:[%.2f, %.2f]", x, y);
+    }
+
+    public PointF toPoint() {
+        return new PointF(x, y);
     }
 }

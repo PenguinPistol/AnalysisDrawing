@@ -19,6 +19,9 @@ import me.penguinpistol.analysisdrawing.drawing.object.JointLine;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 얼굴비율 - 황금삼각비
+ */
 public class GoldenTriangle extends BaseDrawingModel {
 
     public GoldenTriangle(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
@@ -51,13 +54,13 @@ public class GoldenTriangle extends BaseDrawingModel {
         // 코끝 선
         float noseLineY = landmark171.get(49).y;
         float noseLineEndX = average(extractCoordinates(LANDMARK_171, AXIS_X, 103, 104));
-        order2.add(new Line(landmark171.get(92).x, noseLineY, noseLineEndX, noseLineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH));
+        order2.add(new Line(landmark171.get(92).x, noseLineY, noseLineEndX, noseLineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
 
         // 턱끝 선
         float jawLineY = landmark171.get(98).y;
         float jawLineStartX = average(extractCoordinates(LANDMARK_171, AXIS_X, 95, 96));
         float jawLineEndX = average(extractCoordinates(LANDMARK_171, AXIS_X, 100, 101));
-        order2.add(new Line(jawLineStartX, jawLineY, jawLineEndX, jawLineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH));
+        order2.add(new Line(jawLineStartX, jawLineY, jawLineEndX, jawLineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
 
         List<BaseObject> order3 = new ArrayList<>();
         // 삼각형 꼭짓점 텍스트

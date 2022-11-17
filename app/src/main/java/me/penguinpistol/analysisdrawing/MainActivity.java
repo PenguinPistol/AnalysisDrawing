@@ -15,6 +15,7 @@ import com.bumptech.glide.request.transition.Transition;
 
 import me.penguinpistol.analysisdrawing.databinding.ActivityMainBinding;
 import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
@@ -32,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
         MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         Class<? extends BaseDrawingModel>[] models = new Class[] {
-                FaceHorizontalRatio.class,
-                FaceVerticalRatio.class,
-                GoldenTriangle.class
+                FaceHorizontalRatio.class
+                , FaceVerticalRatio.class
+                , GoldenTriangle.class
+                , FaceAsymmetry.class
         };
 
         viewModel.getMeituData(this, analysis -> {

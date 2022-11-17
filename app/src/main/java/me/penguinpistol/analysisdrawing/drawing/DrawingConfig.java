@@ -27,4 +27,16 @@ public final class DrawingConfig {
      */
     public static final int TEXT_SIZE = 10;
     public static final int TEXT_COLOR = Color.WHITE;
+
+    /**
+     * Circle 속성
+     */
+    public static final int CIRCLE_OUTER_RADIUS = 5;
+    public static final int CIRCLE_OUTER_COLOR = Color.MAGENTA;
+    public static final int CIRCLE_INNER_COLOR = Color.WHITE;
+
+    /**
+     * ARC 속성
+     */
+    public static final int ARC_RADIUS = 15;
 }

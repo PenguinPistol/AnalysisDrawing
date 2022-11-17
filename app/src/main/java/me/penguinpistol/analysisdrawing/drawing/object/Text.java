@@ -132,6 +132,11 @@ public class Text extends BaseObject {
         calculateTextBounds();
     }
 
+    public Text offset(float x, float y) {
+        this.point.offset(x, y);
+        return this;
+    }
+
     private void calculateTextBounds() {
         for (int i = 0; i < texts.length; i++) {
             bounds[i] = new Rect();

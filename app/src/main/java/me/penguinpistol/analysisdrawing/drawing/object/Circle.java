@@ -13,6 +13,10 @@ public class Circle extends BaseObject {
     private final float outerRadius;
 
     public Circle(int outerColor, int innerColor, float cx, float cy, float outerRadius) {
+        this(outerColor, innerColor, new PointF(cx, cy), outerRadius);
+    }
+
+    public Circle(int outerColor, int innerColor, PointF cp, float outerRadius) {
         super(outerColor);
         paint.setStyle(Paint.Style.FILL);
 
@@ -20,7 +24,7 @@ public class Circle extends BaseObject {
         innerPaint.setStyle(Paint.Style.FILL);
         innerPaint.setColor(innerColor);
 
-        this.cp = new PointF(cx, cy);
+        this.cp = cp;
         this.outerRadius = outerRadius;
 
         interpolator = new OvershootInterpolator(3.0F);

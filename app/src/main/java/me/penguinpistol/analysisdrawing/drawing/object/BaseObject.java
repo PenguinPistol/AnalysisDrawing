@@ -20,4 +20,9 @@ public abstract class BaseObject {
     }
 
     public abstract void draw(Canvas canvas, long playTime, float fraction);
+
+    public BaseObject setInterpolator(BaseInterpolator interpolator) {
+        this.interpolator = interpolator;
+        return this;
+    }
 }

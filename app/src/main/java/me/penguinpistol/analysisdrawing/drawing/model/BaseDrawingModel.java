@@ -11,11 +11,13 @@ import com.google.gson.JsonElement;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
+import me.penguinpistol.analysisdrawing.drawing.object.Overlay;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
 public abstract class BaseDrawingModel {
@@ -38,16 +40,20 @@ public abstract class BaseDrawingModel {
     protected float infoTextSize;
     protected float defaultThickness;
     protected float defaultTextSize;
+    protected float defaultCircleRadius;
+    protected int overlayColor = 0x33000000;
 
     public BaseDrawingModel(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         this.landmark118 = landmark118;
         this.landmark171 = landmark171;
         this.orders = new ArrayList<>();
+        this.orders.add(new Order(Collections.singletonList(new Overlay(overlayColor, false)), 0, 0));
 
         float density = context.getResources().getDisplayMetrics().density;
         infoTextSize = DrawingConfig.INFO_TEXT_SIZE * density;
         defaultThickness = DrawingConfig.LINE_THICKNESS * density;
         defaultTextSize = DrawingConfig.TEXT_SIZE * density;
+        defaultCircleRadius = DrawingConfig.CIRCLE_OUTER_RADIUS * density;
 
         // TODO parseJson 내부에서 호출하게 변경
         initOrders(context);
@@ -144,5 +150,20 @@ public abstract class BaseDrawingModel {
             return 0;
         }
         return (float) IntStream.range(0, values.length).mapToDouble(i -> values[i]).min().orElse(0);
+    }
+
+    /**
+     * 두 직선의 교차점 구하기
+     */
+    protected PointF intersection(PointF p1, PointF p2, PointF p3, PointF p4) {
+        float numeratorX    = (p1.x * p2.y - p1.y * p2.x) * (p3.x - p4.x) - (p1.x - p2.x) * (p3.x * p4.y - p3.y * p4.x);
+        float numeratorY    = (p1.x * p2.y - p1.y * p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x * p4.y - p3.y * p4.x);
+        float denominator  = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
+
+        if(denominator == 0) {
+            return null;
+        }
+
+        return new PointF(numeratorX / denominator, numeratorY / denominator);
     }
 }
