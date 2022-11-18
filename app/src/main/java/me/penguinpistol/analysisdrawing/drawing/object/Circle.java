@@ -6,7 +6,7 @@ import android.graphics.PointF;
 import android.view.animation.OvershootInterpolator;
 
 public class Circle extends BaseObject {
-    private static final float INNER_RADIUS_RATIO = 0.5F;
+    private static final float INNER_RADIUS_RATIO = 0.6F;
 
     private final Paint innerPaint;
     private final PointF cp;
@@ -27,7 +27,7 @@ public class Circle extends BaseObject {
         this.cp = cp;
         this.outerRadius = outerRadius;
 
-        interpolator = new OvershootInterpolator(3.0F);
+        interpolator = new OvershootInterpolator(3);
     }
 
     @Override

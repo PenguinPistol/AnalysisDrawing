@@ -7,10 +7,12 @@ import android.graphics.Color;
  */
 public final class DrawingConfig {
 
+    public static final long DEFAULT_PLAY_TIME = 500;
+
     /**
      * 좌상단 텍스트 속성
      */
-    public static final int INFO_TEXT_POSITION_X = 24;
+    public static final int INFO_TEXT_POSITION_X = 50;
     public static final int INFO_TEXT_POSITION_Y = 24;
     public static final int INFO_TEXT_SIZE = 12;
 

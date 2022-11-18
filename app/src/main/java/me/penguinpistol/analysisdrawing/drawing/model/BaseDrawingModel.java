@@ -85,6 +85,14 @@ public abstract class BaseDrawingModel {
     }
 
     /**
+     * 랜드마크 포인트 획득
+     */
+    protected PointF point(@Landmark int landmark, int index) {
+        List<PointF> points = landmark == LANDMARK_118 ? landmark118 : landmark171;
+        return index < points.size() ? points.get(index) : null;
+    }
+
+    /**
      * 랜드마크 포인트의 특정 인덱스들의 x/y축 기준 좌표를 추출
      */
     protected float[] extractCoordinates(@Landmark int landmark, @Axis int axis, int... indexes) {
