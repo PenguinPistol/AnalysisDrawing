@@ -51,4 +51,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'com.google.code.gson:gson:2.10' // https://github.com/google/gson
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 }
