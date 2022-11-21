@@ -70,8 +70,12 @@ public class FaceShape extends BaseDrawingModel {
                     .setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
         }
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         List<BaseObject> order2 = new ArrayList<>();
         order2.add(getInfoTextObject("얼굴형"));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.add(new Order(order1, 0, DrawingConfig.DEFAULT_PLAY_TIME));
         orders.add(new Order(order2, DrawingConfig.DEFAULT_PLAY_TIME, DrawingConfig.DEFAULT_PLAY_TIME));

@@ -38,16 +38,21 @@ public class FaceVerticalRatio extends BaseDrawingModel {
         // 하단 가로실선 Y 좌표
         float bottomY = landmark171.get(98).y;
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         List<BaseObject> order1 = new ArrayList<>();
         order1.add(new Line(landmark171.get(84).x, topY, landmark171.get(88).x, topY, DrawingConfig.LINE_COLOR, defaultThickness, Line.SHARP));
         order1.add(new Line(middleStartX, middleY, middleEndX, middleY, DrawingConfig.LINE_COLOR, defaultThickness, Line.SHARP));
         order1.add(new Line(landmark171.get(97).x, bottomY, landmark171.get(99).x, bottomY, DrawingConfig.LINE_COLOR, defaultThickness, Line.SHARP));
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        List<BaseObject> order2 = new ArrayList<>();
+
         // 중정길이 화살표 X 좌표
         float arrowX1 = landmark171.get(113).x;
         // 하정길이 화살표 X 좌표
         float arrowX2 = landmark171.get(143).x;
-        List<BaseObject> order2 = new ArrayList<>();
         order2.add(new Arrow(arrowX1, topY, arrowX1, middleY, DrawingConfig.LINE_COLOR));
         order2.add(new Arrow(arrowX2, middleY, arrowX2, bottomY, DrawingConfig.LINE_COLOR));
 
@@ -58,6 +63,8 @@ public class FaceVerticalRatio extends BaseDrawingModel {
         // 텍스트 크기
         order2.add(new Text(arrowX1, textY1, "중정길이\n%.2fcm", Color.WHITE, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_CENTER));
         order2.add(new Text(arrowX2, textY2, "하정길이\n%.2fcm", Color.WHITE, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_CENTER));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.add(new Order(order1, 0, 500));
         orders.add(new Order(order2, 600, 500));

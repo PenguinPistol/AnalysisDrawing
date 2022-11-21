@@ -33,6 +33,8 @@ public class EyeSize extends BaseDrawingModel {
         float rightEyeOuterX = landmark118.get(46).x;
         float rightEyeEndX = landmark118.get(65).x;
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         List<BaseObject> order1 = new ArrayList<>();
         float leftEyeTopY = landmark118.get(53).y;
         float leftEyeBottomY = landmark118.get(57).y;
@@ -56,6 +58,8 @@ public class EyeSize extends BaseDrawingModel {
         order1.add(new Line(rightEyeStartX, eyeHeightTopY, rightEyeStartX, eyeHeightBottomY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
         order1.add(new Line(rightEyeEndX, eyeHeightTopY, rightEyeEndX, eyeHeightBottomY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         List<BaseObject> order2 = new ArrayList<>();
 
         // 좌우 눈 아래 가로 화살표
@@ -67,6 +71,8 @@ public class EyeSize extends BaseDrawingModel {
         order2.add(new Arrow(rightEyeOuterX, eyeHeightTopY, rightEyeOuterX, eyeHeightBottomY, DrawingConfig.LINE_COLOR));
 
         order2.add(getInfoTextObject("눈높이\nL: %.2fcm\nR: %.2fcm\n눈너비\nL: %.2fcm\nR: %.2fcm"));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.add(new Order(order1, 0, DrawingConfig.DEFAULT_PLAY_TIME));
         orders.add(new Order(order2, DrawingConfig.DEFAULT_PLAY_TIME, DrawingConfig.DEFAULT_PLAY_TIME));

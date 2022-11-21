@@ -30,20 +30,26 @@ public class GoldenTriangle extends BaseDrawingModel {
 
     @Override
     protected void initOrders(Context context) {
-        PointF[] triangle = new PointF[] {
+        final PointF[] triangle = new PointF[] {
                 landmark171.get(0),
                 landmark171.get(15),
                 landmark171.get(54)
         };
 
-        int[] lipLineIndexes = new int[] {
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        List<BaseObject> order1 = new ArrayList<>();
+
+        final int[] lipLineIndexes = new int[] {
                 50, 51, 52, 53, 54, 55, 56, 57,
                 58, 79, 78, 77, 76, 75, 74, 73,
                 50, 66, 67, 68, 69, 70, 72, 58
         };
-        List<BaseObject> order1 = new ArrayList<>();
+
         // 입술라인
         order1.add(new JointLine(Color.MAGENTA, extractPoints(LANDMARK_171, lipLineIndexes), defaultThickness));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         List<BaseObject> order2 = new ArrayList<>();
         // 삼각형
@@ -62,6 +68,8 @@ public class GoldenTriangle extends BaseDrawingModel {
         float jawLineEndX = average(extractCoordinates(LANDMARK_171, AXIS_X, 100, 101));
         order2.add(new Line(jawLineStartX, jawLineY, jawLineEndX, jawLineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         List<BaseObject> order3 = new ArrayList<>();
         // 삼각형 꼭짓점 텍스트
         order3.add(new Text(triangle[0], "A\n%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_CENTER));
@@ -73,6 +81,8 @@ public class GoldenTriangle extends BaseDrawingModel {
         order3.add(new Arrow(noseToJawArrowX, noseLineY, noseToJawArrowX, jawLineY, DrawingConfig.LINE_COLOR));
         order3.add(new Text(noseToJawArrowX, average(noseLineY, jawLineY), "하정길이\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_CENTER));
         order3.add(getInfoTextObject("A포인트\n%.2fº\n\nB포인트\n%.2fº\n\nP포인트\n%.2fº"));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.add(new Order(order1, 0, 1000));
         orders.add(new Order(order2, 0, 500));

@@ -37,8 +37,11 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
         // 좌우 턱라인 Y좌표 평균
         float averageJawlineY = average(extractCoordinates(LANDMARK_171, AXIS_Y, 95, 96, 100, 101));
 
-        // 좌우 비율 세로선
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         List<BaseObject> order1 = new ArrayList<>();
+
+        // 좌우 비율 세로선
         for(float x : extractCoordinates(LANDMARK_171, AXIS_X, verticalSolidLineXIndex)) {
             order1.add(new Line(x, averageEyebrowBottomY, x, averageJawlineY, DrawingConfig.LINE_COLOR, defaultThickness, Line.SHARP));
         }
@@ -48,6 +51,8 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
         float eyeLineEndX = landmark171.get(88).x;
         order1.add(new Line(eyeLineStartX, upperEyelidY, eyeLineEndX, upperEyelidY, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
         order1.add(new Line(eyeLineStartX, landmark171.get(152).y, eyeLineEndX, landmark171.get(152).y, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         List<BaseObject> order2 = new ArrayList<>();
         // 좌상단 텍스트
@@ -69,6 +74,8 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
         order2.add(new Text(textX1, eyeWidthHeightArrowY, "눈높이\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
         order2.add(new Text(textX2, landmark171.get(48).y, "눈간격\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
         order2.add(new Text(textX3, eyeWidthHeightArrowY, "눈너비\n%.2fcm", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.CENTER_TOP));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.add(new Order(order1, 0, 500));
         orders.add(new Order(order2, 600, 500));
