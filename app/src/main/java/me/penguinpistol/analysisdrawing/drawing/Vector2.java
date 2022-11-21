@@ -97,7 +97,7 @@ public final class Vector2 {
     public float distance(float x, float y) {
         float distX = this.x - x;
         float distY = this.y - y;
-        return (float) Math.sqrt((distX * distY) + (distY * distY));
+        return (float) Math.sqrt((distX * distX) + (distY * distY));
     }
 
     public float distance(@NonNull Vector2 other) {
@@ -116,5 +116,19 @@ public final class Vector2 {
 
     public PointF toPoint() {
         return new PointF(x, y);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Vector2 add(Vector2 v1, Vector2 v2) {
+        return new Vector2(v1).add(v2);
+    }
+
+    public static Vector2 sub(Vector2 v1, Vector2 v2) {
+        return new Vector2(v1).sub(v2);
+    }
+
+    public static float dot(Vector2 v1, Vector2 v2) {
+        return (v1.x * v2.x) + (v1.y * v2.y);
     }
 }

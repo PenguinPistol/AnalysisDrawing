@@ -174,4 +174,13 @@ public abstract class BaseDrawingModel {
 
         return new PointF(numeratorX / denominator, numeratorY / denominator);
     }
+
+    /**
+     * 두 점 사이의 길이
+     */
+    protected float distance(PointF p1, PointF p2) {
+        float distX = p1.x - p2.x;
+        float distY = p1.y - p2.y;
+        return (float) Math.sqrt((distX * distX) + (distY * distY));
+    }
 }

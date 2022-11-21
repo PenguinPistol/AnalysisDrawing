@@ -22,6 +22,7 @@ import java.util.regex.PatternSyntaxException;
 
 import me.penguinpistol.analysisdrawing.data.AnalysisData;
 import me.penguinpistol.analysisdrawing.data.ResponseData;
+import me.penguinpistol.analysisdrawing.drawing.model.EyeShape;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeSize;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeSpacing;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
@@ -60,7 +61,8 @@ public class MainViewModel extends ViewModel {
         //
         items.add(new Pair<>("눈", new Parts[] {
                 new Parts(EyeSize.class, "눈 크기"),
-                new Parts(EyeSpacing.class, "눈 간격")
+                new Parts(EyeSpacing.class, "눈 간격"),
+                new Parts(EyeShape.class, "눈매")
         }));
 
         return items;

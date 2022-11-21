@@ -21,8 +21,8 @@ public final class DrawingConfig {
      */
     public static final int LINE_THICKNESS = 1;
     public static final int LINE_COLOR = Color.WHITE;
-    public static final float LINE_DASH_INTERVAL = 10F;
-    public static final float LINE_DASH_PHASE = 5F;
+    public static final float LINE_DASH_INTERVAL = 6F;
+    public static final float LINE_DASH_PHASE = 6F;
 
     /**
      * Text 속성
