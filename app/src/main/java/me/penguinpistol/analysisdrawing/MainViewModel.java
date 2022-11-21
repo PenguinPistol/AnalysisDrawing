@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.core.util.Pair;
 import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
@@ -14,11 +15,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.PatternSyntaxException;
 
 import me.penguinpistol.analysisdrawing.data.AnalysisData;
 import me.penguinpistol.analysisdrawing.data.ResponseData;
+import me.penguinpistol.analysisdrawing.drawing.model.EyeSize;
+import me.penguinpistol.analysisdrawing.drawing.model.EyeSpacing;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
+import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
 
 public class MainViewModel extends ViewModel {
 
@@ -34,6 +44,28 @@ public class MainViewModel extends ViewModel {
             e.printStackTrace();
         }
     }
+
+
+    public List<Pair<String, Parts[]>> getParts() {
+        List<Pair<String, Parts[]>> items = new ArrayList<>();
+        //
+        items.add(new Pair<>("얼굴비율", new Parts[] {
+                new Parts(FaceHorizontalRatio.class, "가로비율"),
+                new Parts(FaceVerticalRatio.class, "세로비율"),
+                new Parts(GoldenTriangle.class, "황금삼각존"),
+                new Parts(FaceAsymmetry.class, "얼굴비대칭"),
+        }));
+        //
+        items.add(new Pair<>("얼굴형", new Parts[] { new Parts(FaceShape.class, "얼굴형")}));
+        //
+        items.add(new Pair<>("눈", new Parts[] {
+                new Parts(EyeSize.class, "눈 크기"),
+                new Parts(EyeSpacing.class, "눈 간격")
+        }));
+
+        return items;
+    }
+
 
     public static JsonObject findChildJsonObject(@Nullable JsonObject root, @Nullable String path) {
         if(root == null || path == null) {

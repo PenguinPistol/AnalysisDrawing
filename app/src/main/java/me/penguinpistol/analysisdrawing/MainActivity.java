@@ -18,18 +18,10 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.flexbox.FlexboxLayoutManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import me.penguinpistol.analysisdrawing.databinding.ActivityMainBinding;
 import me.penguinpistol.analysisdrawing.databinding.ItemPartsBinding;
-import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
-import me.penguinpistol.analysisdrawing.drawing.model.EyeSize;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
-import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,27 +52,14 @@ public class MainActivity extends AppCompatActivity {
                 });
         });
 
-        mBinding.listModel.setAdapter(new PartsAdapter());
+        mBinding.listModel.setAdapter(new PartsAdapter(viewModel.getParts()));
     }
 
     public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.ViewHolder> {
         private final List<Pair<String, Parts[]>> items;
 
-        public PartsAdapter() {
-            this.items = new ArrayList<>();
-            //
-            items.add(new Pair<>("얼굴비율", new Parts[] {
-                new Parts(FaceHorizontalRatio.class, "가로비율"),
-                new Parts(FaceVerticalRatio.class, "세로비율"),
-                new Parts(GoldenTriangle.class, "황금삼각존"),
-                new Parts(FaceAsymmetry.class, "얼굴비대칭"),
-            }));
-            //
-            items.add(new Pair<>("얼굴형", new Parts[] { new Parts(FaceShape.class, "얼굴형")}));
-            //
-            items.add(new Pair<>("눈", new Parts[] {
-               new Parts(EyeSize.class, "눈 크기")
-            }));
+        public PartsAdapter(List<Pair<String, Parts[]>> items) {
+            this.items = items;
         }
 
         @NonNull
@@ -148,16 +127,6 @@ public class MainActivity extends AppCompatActivity {
                 super(itemView);
                 this.itemView = itemView;
             }
-        }
-    }
-
-    private static class Parts {
-        Class<? extends BaseDrawingModel> modelClass;
-        String name;
-
-        public Parts(Class<? extends BaseDrawingModel> modelClass, String name) {
-            this.modelClass = modelClass;
-            this.name = name;
         }
     }
 }
