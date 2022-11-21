@@ -24,6 +24,7 @@ import java.util.List;
 import me.penguinpistol.analysisdrawing.databinding.ActivityMainBinding;
 import me.penguinpistol.analysisdrawing.databinding.ItemPartsBinding;
 import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
+import me.penguinpistol.analysisdrawing.drawing.model.EyeSize;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
@@ -67,13 +68,19 @@ public class MainActivity extends AppCompatActivity {
 
         public PartsAdapter() {
             this.items = new ArrayList<>();
+            //
             items.add(new Pair<>("얼굴비율", new Parts[] {
                 new Parts(FaceHorizontalRatio.class, "가로비율"),
                 new Parts(FaceVerticalRatio.class, "세로비율"),
                 new Parts(GoldenTriangle.class, "황금삼각존"),
                 new Parts(FaceAsymmetry.class, "얼굴비대칭"),
             }));
+            //
             items.add(new Pair<>("얼굴형", new Parts[] { new Parts(FaceShape.class, "얼굴형")}));
+            //
+            items.add(new Pair<>("눈", new Parts[] {
+               new Parts(EyeSize.class, "눈 크기")
+            }));
         }
 
         @NonNull
