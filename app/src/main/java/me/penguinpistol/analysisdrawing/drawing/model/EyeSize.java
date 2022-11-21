@@ -16,6 +16,9 @@ import me.penguinpistol.analysisdrawing.drawing.object.Arrow;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 
+/**
+ * 눈 - 눈크기
+ */
 public class EyeSize extends BaseDrawingModel {
     private static final float MARGIN = 25F;
 

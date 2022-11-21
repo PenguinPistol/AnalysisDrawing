@@ -17,6 +17,9 @@ import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 눈 - 눈매
+ */
 public class EyeShape extends BaseDrawingModel {
 
     public EyeShape(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {

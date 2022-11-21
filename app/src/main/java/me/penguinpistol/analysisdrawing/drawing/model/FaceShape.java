@@ -21,6 +21,9 @@ import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Circle;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 
+/**
+ * 얼굴형 - 얼굴형
+ */
 public class FaceShape extends BaseDrawingModel {
 
     public FaceShape(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {

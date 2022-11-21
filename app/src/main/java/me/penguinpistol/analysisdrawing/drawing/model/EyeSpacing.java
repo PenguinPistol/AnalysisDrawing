@@ -17,6 +17,9 @@ import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 눈 - 눈 간격
+ */
 public class EyeSpacing extends BaseDrawingModel {
 
     public EyeSpacing(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
