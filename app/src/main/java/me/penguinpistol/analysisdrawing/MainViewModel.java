@@ -35,6 +35,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
+import me.penguinpistol.analysisdrawing.drawing.model.NoseLength;
 import me.penguinpistol.analysisdrawing.drawing.model.Ptosis;
 
 public class MainViewModel extends ViewModel {
@@ -81,6 +82,10 @@ public class MainViewModel extends ViewModel {
                 new Parts(EyebrowShape.class, "눈썹 모양")
                 , new Parts(EyebrowLength.class, "눈썹 길이")
                 , new Parts(EyebrowGap.class, "눈썹 간격")
+        }));
+        //
+        items.add(new Pair<>("코", new Parts[] {
+                new Parts(NoseLength.class, "코길이")
         }));
 
         return items;
