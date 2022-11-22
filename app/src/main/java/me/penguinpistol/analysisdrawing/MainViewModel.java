@@ -31,6 +31,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
+import me.penguinpistol.analysisdrawing.drawing.model.Ptosis;
 
 public class MainViewModel extends ViewModel {
 
@@ -67,7 +68,8 @@ public class MainViewModel extends ViewModel {
         }));
         //
         items.add(new Pair<>("쌍꺼풀", new Parts[] {
-                new Parts(DoubleEyelid.class, "쌍꺼풀")
+                new Parts(DoubleEyelid.class, "쌍꺼풀"),
+                new Parts(Ptosis.class, "안검하수")
         }));
 
         return items;
