@@ -27,6 +27,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.EyeAndEyebrowGap;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeShape;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeSize;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeSpacing;
+import me.penguinpistol.analysisdrawing.drawing.model.EyebrowShape;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
@@ -72,6 +73,10 @@ public class MainViewModel extends ViewModel {
                 new Parts(DoubleEyelid.class, "쌍꺼풀"),
                 new Parts(Ptosis.class, "안검하수"),
                 new Parts(EyeAndEyebrowGap.class, "눈과 눈썹거리")
+        }));
+        //
+        items.add(new Pair<>("눈썹", new Parts[] {
+                new Parts(EyebrowShape.class, "눈썹 모양")
         }));
 
         return items;

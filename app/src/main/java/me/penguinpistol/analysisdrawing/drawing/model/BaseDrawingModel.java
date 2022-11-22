@@ -1,6 +1,7 @@
 package me.penguinpistol.analysisdrawing.drawing.model;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PointF;
 
 import androidx.annotation.IntDef;
@@ -11,12 +12,14 @@ import com.google.gson.JsonElement;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
+import me.penguinpistol.analysisdrawing.drawing.object.JointLine;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Overlay;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
@@ -129,6 +132,14 @@ public abstract class BaseDrawingModel {
 
     protected Text createText(PointF p, String text, Text.Anchor anchor) {
         return createText(p.x, p.y, text, Text.Align.LEFT, anchor);
+    }
+
+    protected JointLine createJointLine(List<PointF> points) {
+        return new JointLine(Color.MAGENTA, points, defaultThickness, true);
+    }
+
+    protected JointLine createJointLine(List<PointF> points, boolean isClosed) {
+        return new JointLine(Color.MAGENTA, points, defaultThickness, isClosed);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
