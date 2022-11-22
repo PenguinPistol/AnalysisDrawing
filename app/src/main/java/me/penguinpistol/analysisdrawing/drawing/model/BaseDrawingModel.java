@@ -17,6 +17,7 @@ import java.util.stream.IntStream;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
+import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Overlay;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
@@ -73,6 +74,8 @@ public abstract class BaseDrawingModel {
         return orders;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * 좌상단 정보텍스트 드로잉요소
      */
@@ -83,6 +86,52 @@ public abstract class BaseDrawingModel {
     protected Text getInfoTextObject(String text, Text.Align align) {
         return new Text(DrawingConfig.INFO_TEXT_POSITION_X, DrawingConfig.INFO_TEXT_POSITION_Y, text, DrawingConfig.LINE_COLOR, infoTextSize, align, Text.Anchor.LEFT_TOP);
     }
+
+    protected Line createShapeLine(float x1, float y1, float x2, float y2) {
+        return new Line(x1, y1, x2, y2, DrawingConfig.LINE_COLOR, defaultThickness, Line.SHARP);
+    }
+
+    protected Line createShapeLine(PointF p1, PointF p2) {
+        return createShapeLine(p1.x, p1.y, p2.x, p2.y);
+    }
+
+    protected Line createDashLine(float x1, float y1, float x2, float y2) {
+        return new Line(x1, y1, x2, y2, DrawingConfig.LINE_COLOR, defaultThickness, Line.DASH).setDashConfig(DrawingConfig.LINE_DASH_INTERVAL, DrawingConfig.LINE_DASH_PHASE);
+    }
+
+    protected Line createDashLine(PointF p1, PointF p2) {
+        return createDashLine(p1.x, p1.y, p2.x, p2.y);
+    }
+
+    protected Text createText(float x, float y, String text, Text.Align align, Text.Anchor anchor) {
+        return new Text(x, y, text, DrawingConfig.LINE_COLOR, defaultTextSize, align, anchor);
+    }
+
+    protected Text createText(float x, float y, String text) {
+        return createText(x, y, text, Text.Align.LEFT, Text.Anchor.LEFT_TOP);
+    }
+
+    protected Text createText(float x, float y, String text, Text.Align align) {
+        return createText(x, y, text, align, Text.Anchor.LEFT_TOP);
+    }
+
+    protected Text createText(float x, float y, String text, Text.Anchor anchor) {
+        return createText(x, y, text, Text.Align.LEFT, anchor);
+    }
+
+    protected Text createText(PointF p, String text) {
+        return createText(p.x, p.y, text, Text.Align.LEFT, Text.Anchor.LEFT_TOP);
+    }
+
+    protected Text createText(PointF p, String text, Text.Align align) {
+        return createText(p.x, p.y, text, align, Text.Anchor.LEFT_TOP);
+    }
+
+    protected Text createText(PointF p, String text, Text.Anchor anchor) {
+        return createText(p.x, p.y, text, Text.Align.LEFT, anchor);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * 랜드마크 포인트 획득
