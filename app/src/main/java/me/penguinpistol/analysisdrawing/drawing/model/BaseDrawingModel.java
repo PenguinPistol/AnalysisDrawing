@@ -19,6 +19,7 @@ import java.util.stream.IntStream;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
+import me.penguinpistol.analysisdrawing.drawing.object.Arrow;
 import me.penguinpistol.analysisdrawing.drawing.object.JointLine;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Overlay;
@@ -142,6 +143,14 @@ public abstract class BaseDrawingModel {
         return new JointLine(Color.MAGENTA, points, defaultThickness, isClosed);
     }
 
+    protected Arrow createArrow(float x1, float y1, float x2, float y2) {
+        return new Arrow(x1, y1, x2, y2, DrawingConfig.LINE_COLOR);
+    }
+
+    protected Arrow createArrow(PointF p1, PointF p2) {
+        return createArrow(p1.x, p1.y, p2.x, p2.y);
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
@@ -226,13 +235,22 @@ public abstract class BaseDrawingModel {
     protected PointF intersection(PointF p1, PointF p2, PointF p3, PointF p4) {
         float numeratorX    = (p1.x * p2.y - p1.y * p2.x) * (p3.x - p4.x) - (p1.x - p2.x) * (p3.x * p4.y - p3.y * p4.x);
         float numeratorY    = (p1.x * p2.y - p1.y * p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x * p4.y - p3.y * p4.x);
-        float denominator  = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
+        float denominator   = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
 
         if(denominator == 0) {
             return null;
         }
 
         return new PointF(numeratorX / denominator, numeratorY / denominator);
+    }
+
+    protected PointF intersection(@Landmark int landmark, int p1, int p2, int p3, int p4) {
+        List<PointF> points = landmark == LANDMARK_118 ? landmark118 : landmark171;
+        try {
+            return intersection(points.get(p1), points.get(p2), points.get(p3), points.get(p4));
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
     }
 
     /**
