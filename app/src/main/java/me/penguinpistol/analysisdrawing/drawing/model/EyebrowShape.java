@@ -36,7 +36,7 @@ public class EyebrowShape extends BaseDrawingModel {
         // 왼쪽 눈썹 rect 점선
         float leftOuterX = landmark118.get(33).x;
         float leftInnerX = landmark118.get(37).x;
-        float leftUpperY = max(extractCoordinates(LANDMARK_118, AXIS_Y, 34, 35));
+        float leftUpperY = min(extractCoordinates(LANDMARK_118, AXIS_Y, 34, 35));
         float leftLowerY = landmark118.get(38).y;
         order1.add(createDashLine(leftOuterX - dashOffset, leftUpperY, leftInnerX + dashOffset, leftUpperY));
         order1.add(createDashLine(leftOuterX - dashOffset, leftLowerY, leftInnerX + dashOffset, leftLowerY));
@@ -46,7 +46,7 @@ public class EyebrowShape extends BaseDrawingModel {
         // 오른쪽 눈썹 rect 점선
         float rightOuterX = landmark118.get(46).x;
         float rightInnerX = landmark118.get(42).x;
-        float rightUpperY = max(extractCoordinates(LANDMARK_118, AXIS_Y, 44, 45));
+        float rightUpperY = min(extractCoordinates(LANDMARK_118, AXIS_Y, 44, 45));
         float rightLowerY = landmark118.get(50).y;
         order1.add(createDashLine(rightOuterX + dashOffset, rightUpperY, rightInnerX - dashOffset, rightUpperY));
         order1.add(createDashLine(rightOuterX + dashOffset, rightLowerY, rightInnerX - dashOffset, rightLowerY));
