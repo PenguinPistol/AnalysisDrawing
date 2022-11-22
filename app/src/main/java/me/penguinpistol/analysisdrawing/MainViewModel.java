@@ -36,6 +36,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
 import me.penguinpistol.analysisdrawing.drawing.model.NoseLength;
+import me.penguinpistol.analysisdrawing.drawing.model.NoseWidth;
 import me.penguinpistol.analysisdrawing.drawing.model.Ptosis;
 
 public class MainViewModel extends ViewModel {
@@ -86,6 +87,7 @@ public class MainViewModel extends ViewModel {
         //
         items.add(new Pair<>("코", new Parts[] {
                 new Parts(NoseLength.class, "코길이")
+                , new Parts(NoseWidth.class, "코너비")
         }));
 
         return items;
