@@ -28,6 +28,7 @@ public final class DrawingConfig {
      * Text 속성
      */
     public static final int TEXT_SIZE = 10;
+    public static final int TEXT_OFFSET = 4;
     public static final int TEXT_COLOR = Color.WHITE;
 
     /**

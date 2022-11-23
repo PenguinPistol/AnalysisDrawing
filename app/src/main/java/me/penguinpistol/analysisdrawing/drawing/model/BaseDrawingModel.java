@@ -45,6 +45,7 @@ public abstract class BaseDrawingModel {
     protected float infoTextSize;
     protected float defaultThickness;
     protected float defaultTextSize;
+    protected float defaultTextOffset;
     protected float defaultCircleRadius;
     protected int overlayColor = 0x33000000;
 
@@ -58,6 +59,7 @@ public abstract class BaseDrawingModel {
         infoTextSize = DrawingConfig.INFO_TEXT_SIZE * density;
         defaultThickness = DrawingConfig.LINE_THICKNESS * density;
         defaultTextSize = DrawingConfig.TEXT_SIZE * density;
+        defaultTextOffset = DrawingConfig.TEXT_OFFSET * density;
         defaultCircleRadius = DrawingConfig.CIRCLE_OUTER_RADIUS * density;
 
         // TODO parseJson 내부에서 호출하게 변경
