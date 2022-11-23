@@ -84,43 +84,22 @@ public class Text extends BaseObject {
             float x = 0;
             float y = 0;
 
-            switch (anchor) {
-                case LEFT_TOP:
-                    x = point.x + (remainingSpace * align.value);
-                    y = point.y + maxHeight * (i+1);
-                    break;
-                case LEFT_CENTER:
-                    x = point.x + (remainingSpace * align.value);
-                    y = point.y + maxHeight * (i+1) - (maxHeight * texts.length * 0.5F);
-                    break;
-                case LEFT_BOTTOM:
-                    x = point.x + (remainingSpace * align.value);
-                    y = point.y - maxHeight * (texts.length - (i+1));
-                    break;
-                case CENTER_TOP:
-                    x = point.x - bounds[i].centerX() + (remainingSpace * (align.value - 0.5F));
-                    y = point.y + maxHeight * (i+1);
-                    break;
-                case CENTER_CENTER:
-                    x = point.x - bounds[i].centerX() + (remainingSpace * (align.value - 0.5F));
-                    y = point.y + maxHeight * (i+1) - (maxHeight * texts.length * 0.5F);
-                    break;
-                case CENTER_BOTTOM:
-                    x = point.x - bounds[i].centerX() + (remainingSpace * (align.value - 0.5F));
-                    y = point.y - maxHeight * (texts.length - (i+1));
-                    break;
-                case RIGHT_TOP:
-                    x = point.x - bounds[i].width() - (remainingSpace * (1F - align.value));
-                    y = point.y + maxHeight * (i+1);
-                    break;
-                case RIGHT_CENTER:
-                    x = point.x - bounds[i].width() - (remainingSpace * (1F - align.value));
-                    y = point.y + maxHeight * (i+1) - (maxHeight * texts.length * 0.5F);
-                    break;
-                case RIGHT_BOTTOM:
-                    x = point.x - bounds[i].width() - (remainingSpace * (1F - align.value));
-                    y = point.y - maxHeight * (texts.length - (i+1));
-                    break;
+            // check horizontal anchor
+            if(anchor.check(ANCHOR_LEFT)) {
+                x = point.x + (remainingSpace * align.value);
+            } else if(anchor.check(ANCHOR_CENTER)) {
+                x = point.x - bounds[i].centerX() + (remainingSpace * (align.value - 0.5F));
+            } else if(anchor.check(ANCHOR_RIGHT)) {
+                x = point.x - bounds[i].width() - (remainingSpace * (1F - align.value));
+            }
+
+            // check vertical anchor
+            if(anchor.check(ANCHOR_TOP)) {
+                y = point.y + maxHeight * (i+1);
+            } else if(anchor.check(ANCHOR_MIDDLE)) {
+                y = point.y + maxHeight * (i+1) - (maxHeight * texts.length * 0.5F);
+            } else if(anchor.check(ANCHOR_BOTTOM)) {
+                y = point.y - maxHeight * (texts.length - (i+1));
             }
 
             canvas.drawText(texts[i], x, y + translateY, paint);
@@ -158,16 +137,33 @@ public class Text extends BaseObject {
         }
     }
 
+    private static final int ANCHOR_LEFT    = 32;
+    private static final int ANCHOR_CENTER  = 16;
+    private static final int ANCHOR_RIGHT   = 8;
+    private static final int ANCHOR_TOP     = 4;
+    private static final int ANCHOR_MIDDLE  = 2;
+    private static final int ANCHOR_BOTTOM  = 1;
+
     public enum Anchor {
-        LEFT_TOP,
-        LEFT_CENTER,
-        LEFT_BOTTOM,
-        CENTER_TOP,
-        CENTER_CENTER,
-        CENTER_BOTTOM,
-        RIGHT_TOP,
-        RIGHT_CENTER,
-        RIGHT_BOTTOM
+        LEFT_TOP(36),       // 100100
+        LEFT_CENTER(34),    // 100010
+        LEFT_BOTTOM(33),    // 100001
+        CENTER_TOP(20),     // 010100
+        CENTER_CENTER(18),  // 010010
+        CENTER_BOTTOM(17),  // 010001
+        RIGHT_TOP(12),      // 001100
+        RIGHT_CENTER(10),   // 001010
+        RIGHT_BOTTOM(9)     // 001001
         ;
+
+        final int mask;
+
+        Anchor(int mask) {
+            this.mask = mask;
+        }
+
+        boolean check(int mask) {
+            return (this.mask & mask) > 0;
+        }
     }
 }
