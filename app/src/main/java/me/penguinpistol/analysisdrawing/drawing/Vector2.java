@@ -118,6 +118,10 @@ public final class Vector2 {
         return new PointF(x, y);
     }
 
+    public PointF toPoint(Vector2 offset) {
+        return new PointF(x + offset.x, y + offset.y);
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static Vector2 add(Vector2 v1, Vector2 v2) {
