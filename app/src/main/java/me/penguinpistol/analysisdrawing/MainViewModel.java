@@ -44,6 +44,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.NoseLength;
 import me.penguinpistol.analysisdrawing.drawing.model.NoseWidth;
 import me.penguinpistol.analysisdrawing.drawing.model.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.Ptosis;
+import me.penguinpistol.analysisdrawing.drawing.model.SquareJaw;
 
 public class MainViewModel extends ViewModel {
 
@@ -106,6 +107,7 @@ public class MainViewModel extends ViewModel {
         items.add(new Pair<>("윤곽", new Parts[] {
                 new Parts(CheekBone.class, "광대뼈")
                 , new Parts(FrontJaw.class, "앞턱")
+                , new Parts(SquareJaw.class, "사각턱")
         }));
 
         return items;
