@@ -22,6 +22,7 @@ import java.util.regex.PatternSyntaxException;
 
 import me.penguinpistol.analysisdrawing.data.AnalysisData;
 import me.penguinpistol.analysisdrawing.data.ResponseData;
+import me.penguinpistol.analysisdrawing.drawing.model.CheekBone;
 import me.penguinpistol.analysisdrawing.drawing.model.DoubleEyelid;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeAndEyebrowGap;
 import me.penguinpistol.analysisdrawing.drawing.model.EyeShape;
@@ -61,44 +62,48 @@ public class MainViewModel extends ViewModel {
 
     public List<Pair<String, Parts[]>> getParts() {
         List<Pair<String, Parts[]>> items = new ArrayList<>();
-        //
+        // 얼굴비율
         items.add(new Pair<>("얼굴비율", new Parts[] {
                 new Parts(FaceHorizontalRatio.class, "가로비율"),
                 new Parts(FaceVerticalRatio.class, "세로비율"),
                 new Parts(GoldenTriangle.class, "황금삼각존"),
                 new Parts(FaceAsymmetry.class, "얼굴비대칭"),
         }));
-        //
+        // 얼굴형
         items.add(new Pair<>("얼굴형", new Parts[] { new Parts(FaceShape.class, "얼굴형")}));
-        //
+        // 눈
         items.add(new Pair<>("눈", new Parts[] {
                 new Parts(EyeSize.class, "눈 크기"),
                 new Parts(EyeSpacing.class, "눈 간격"),
                 new Parts(EyeShape.class, "눈매")
         }));
-        //
+        // 쌍꺼풀
         items.add(new Pair<>("쌍꺼풀", new Parts[] {
                 new Parts(DoubleEyelid.class, "쌍꺼풀"),
                 new Parts(Ptosis.class, "안검하수"),
                 new Parts(EyeAndEyebrowGap.class, "눈과 눈썹거리")
         }));
-        //
+        // 눈썹
         items.add(new Pair<>("눈썹", new Parts[] {
                 new Parts(EyebrowShape.class, "눈썹 모양")
                 , new Parts(EyebrowLength.class, "눈썹 길이")
                 , new Parts(EyebrowGap.class, "눈썹 간격")
         }));
-        //
+        // 코
         items.add(new Pair<>("코", new Parts[] {
                 new Parts(NoseLength.class, "코길이")
                 , new Parts(NoseWidth.class, "코너비")
         }));
-        //
+        // 입
         items.add(new Pair<>("입", new Parts[] {
                 new Parts(LipThickness.class, "입술두께")
                 , new Parts(LipMountain.class, "입술산")
                 , new Parts(LipTail.class, "입꼬리")
                 , new Parts(Philtrum.class, "인중")
+        }));
+        // 윤곽
+        items.add(new Pair<>("윤곽", new Parts[] {
+                new Parts(CheekBone.class, "광대뼈")
         }));
 
         return items;
