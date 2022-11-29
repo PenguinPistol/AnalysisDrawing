@@ -40,6 +40,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.LipTail;
 import me.penguinpistol.analysisdrawing.drawing.model.LipThickness;
 import me.penguinpistol.analysisdrawing.drawing.model.NoseLength;
 import me.penguinpistol.analysisdrawing.drawing.model.NoseWidth;
+import me.penguinpistol.analysisdrawing.drawing.model.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.Ptosis;
 
 public class MainViewModel extends ViewModel {
@@ -97,6 +98,7 @@ public class MainViewModel extends ViewModel {
                 new Parts(LipThickness.class, "입술두께")
                 , new Parts(LipMountain.class, "입술산")
                 , new Parts(LipTail.class, "입꼬리")
+                , new Parts(Philtrum.class, "인중")
         }));
 
         return items;
