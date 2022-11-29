@@ -29,7 +29,9 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
     private final SurfaceHolder mHolder;
     private final Rect mViewRect;
 
+    private ScheduledExecutorService mOrderExecutor;
     private ScheduledExecutorService mRenderExecutor;
+    private Canvas mBufferCanvas;
     private boolean mIsRepeat;
     private int mDrawingIndex;
     private long mStartTime;
@@ -94,9 +96,9 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
-        if(mRenderExecutor != null && !mRenderExecutor.isShutdown()) {
-            mRenderExecutor.shutdownNow();
-            mRenderExecutor = null;
+        if(mOrderExecutor != null && !mOrderExecutor.isShutdown()) {
+            mOrderExecutor.shutdown();
+            mOrderExecutor = null;
         }
     }
 
@@ -106,15 +108,15 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
             return;
         }
 
-        if(mRenderExecutor != null && !mRenderExecutor.isShutdown()) {
-            mRenderExecutor.shutdownNow();
-            mRenderExecutor = null;
+        if(mOrderExecutor != null && !mOrderExecutor.isShutdown()) {
+            mOrderExecutor.shutdown();
+            mOrderExecutor = null;
         }
 
         mModels = models;
         mDrawingIndex = 0;
-        mRenderExecutor = Executors.newSingleThreadScheduledExecutor();
-        mRenderExecutor.scheduleWithFixedDelay(() -> {
+        mOrderExecutor = Executors.newSingleThreadScheduledExecutor();
+        mOrderExecutor.scheduleWithFixedDelay(() -> {
             try {
                 BaseDrawingModel model = models[mDrawingIndex]
                         .getDeclaredConstructor(Context.class, List.class, List.class)
@@ -125,17 +127,21 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
                     return;
                 }
 
+                if(mRenderExecutor != null && !mRenderExecutor.isShutdown()) {
+                    mRenderExecutor.shutdown();
+                    mRenderExecutor = null;
+                }
+
                 mStartTime = System.currentTimeMillis();
                 mTotalPlayTime = orders.stream().mapToLong(Order::getTotalPlayTime).max().orElse(0);
                 mCurrentPlayTime = 0;
-
-                Canvas canvas;
-                while(mCurrentPlayTime < mTotalPlayTime) {
-                    canvas = mHolder.lockCanvas(mViewRect);
+                mRenderExecutor = Executors.newSingleThreadScheduledExecutor();
+                mRenderExecutor.scheduleAtFixedRate(() -> {
+                    mBufferCanvas = mHolder.lockCanvas(mViewRect);
                     synchronized (mHolder) {
                         mCurrentPlayTime = System.currentTimeMillis() - mStartTime;
 
-                        drawBackground(canvas);
+                        drawBackground(mBufferCanvas);
                         for (int i = 0; i < orders.size(); i++) {
                             Order order = orders.get(i);
                             float fraction = 0;
@@ -144,13 +150,19 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
                                 fraction = Math.min(1.0F, (float)(mCurrentPlayTime - order.getDelay()) / order.getPlayTime());
                             }
 
-                            order.draw(canvas, fraction);
+                            order.draw(mBufferCanvas, fraction);
                         }
                     }
-                    mHolder.unlockCanvasAndPost(canvas);
-                }
+                    mHolder.unlockCanvasAndPost(mBufferCanvas);
+                    if(mCurrentPlayTime >= mTotalPlayTime) {
+                        mRenderExecutor.shutdown();
+                    }
+                }, 0, 1000/60, TimeUnit.MILLISECONDS);
+
+                while(!mRenderExecutor.isTerminated());
+
                 if(mDrawingIndex == models.length && !mIsRepeat) {
-                    mRenderExecutor.shutdown();
+                    mOrderExecutor.shutdown();
                 } else {
                     mDrawingIndex = (mDrawingIndex + 1) % models.length;
                 }
