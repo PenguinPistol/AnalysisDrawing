@@ -35,6 +35,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
 import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.FrontJaw;
 import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
 import me.penguinpistol.analysisdrawing.drawing.model.LipMountain;
 import me.penguinpistol.analysisdrawing.drawing.model.LipTail;
@@ -104,6 +105,7 @@ public class MainViewModel extends ViewModel {
         // 윤곽
         items.add(new Pair<>("윤곽", new Parts[] {
                 new Parts(CheekBone.class, "광대뼈")
+                , new Parts(FrontJaw.class, "앞턱")
         }));
 
         return items;
