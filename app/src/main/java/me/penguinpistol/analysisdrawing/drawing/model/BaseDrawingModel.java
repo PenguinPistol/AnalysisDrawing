@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PointF;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 
@@ -49,7 +50,9 @@ public abstract class BaseDrawingModel {
     protected float defaultTextSize;
     protected float defaultTextOffset;
     protected float defaultCircleRadius;
-    protected int overlayColor = 0x33000000;
+
+    @ColorInt protected int overlayColor = 0x33000000;
+    @ColorInt protected int jointLineColor = Color.MAGENTA;
 
     public BaseDrawingModel(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         this.landmark118 = landmark118;
@@ -150,11 +153,11 @@ public abstract class BaseDrawingModel {
     }
 
     protected JointLine createJointLine(List<PointF> points) {
-        return new JointLine(Color.MAGENTA, points, defaultThickness, true);
+        return createJointLine(points, true);
     }
 
     protected JointLine createJointLine(List<PointF> points, boolean isClosed) {
-        return new JointLine(Color.MAGENTA, points, defaultThickness, isClosed);
+        return new JointLine(jointLineColor, points, defaultThickness, isClosed);
     }
 
     protected Arrow createArrow(float x1, float y1, float x2, float y2) {
