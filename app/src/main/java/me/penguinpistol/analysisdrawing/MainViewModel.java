@@ -46,6 +46,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.face.NoseWidth;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Ptosis;
 import me.penguinpistol.analysisdrawing.drawing.model.face.SquareJaw;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinType;
 
 public class MainViewModel extends ViewModel {
 
@@ -118,6 +119,7 @@ public class MainViewModel extends ViewModel {
         List<Pair<String, Parts[]>> items = new ArrayList<>();
         // 피부유형
         items.add(new Pair<>("피부유형", new Parts[] {
+                new Parts(SkinType.class, "피부유형")
         }));
 
         return items;

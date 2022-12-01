@@ -55,7 +55,6 @@ public abstract class BaseDrawingModel {
         this.landmark118 = landmark118;
         this.landmark171 = landmark171;
         this.orders = new ArrayList<>();
-        this.orders.add(new Order(Collections.singletonList(new Overlay(overlayColor, false)), 0, 0));
 
         float density = context.getResources().getDisplayMetrics().density;
         infoTextSize = DrawingConfig.INFO_TEXT_SIZE * density;
@@ -66,6 +65,8 @@ public abstract class BaseDrawingModel {
 
         // TODO parseJson 내부에서 호출하게 변경
         initOrders(context);
+
+        this.orders.add(0, new Order(Collections.singletonList(new Overlay(overlayColor, false)), 0, 0));
     }
 
     /**
