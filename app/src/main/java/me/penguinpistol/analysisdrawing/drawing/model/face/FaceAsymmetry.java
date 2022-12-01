@@ -1,4 +1,4 @@
-package me.penguinpistol.analysisdrawing.drawing.model;
+package me.penguinpistol.analysisdrawing.drawing.model.face;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,6 +16,7 @@ import java.util.stream.IntStream;
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
 import me.penguinpistol.analysisdrawing.drawing.Vector2;
+import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.Arc;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Circle;

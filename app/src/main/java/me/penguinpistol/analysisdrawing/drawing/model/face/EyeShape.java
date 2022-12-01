@@ -1,4 +1,4 @@
-package me.penguinpistol.analysisdrawing.drawing.model;
+package me.penguinpistol.analysisdrawing.drawing.model.face;
 
 import android.content.Context;
 import android.graphics.PointF;
@@ -13,6 +13,7 @@ import java.util.List;
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
 import me.penguinpistol.analysisdrawing.drawing.Vector2;
+import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Line;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;

@@ -1,4 +1,4 @@
-package me.penguinpistol.analysisdrawing.drawing.model;
+package me.penguinpistol.analysisdrawing.drawing.model.face;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,11 +13,13 @@ import java.util.List;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
+import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
-public class SquareJaw extends BaseDrawingModel {
-    public SquareJaw(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
+public class CheekBone extends BaseDrawingModel {
+
+    public CheekBone(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         super(context, landmark118, landmark171);
     }
 
@@ -83,7 +85,7 @@ public class SquareJaw extends BaseDrawingModel {
         order2.add(createCircle(middleEndX, middleFaceTopY));
 
         // 좌상단 텍스트
-        order2.add(getInfoTextObject("광대와 사각턱의 비율\n%s\n사각턱 너비\n%.1fcm"));
+        order2.add(getInfoTextObject("광대와 사각턱의 비율\n%s\n광대 너비\n%.1fcm"));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

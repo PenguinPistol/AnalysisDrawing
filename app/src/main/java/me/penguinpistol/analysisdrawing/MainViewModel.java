@@ -22,30 +22,30 @@ import java.util.regex.PatternSyntaxException;
 
 import me.penguinpistol.analysisdrawing.data.AnalysisData;
 import me.penguinpistol.analysisdrawing.data.ResponseData;
-import me.penguinpistol.analysisdrawing.drawing.model.CheekBone;
-import me.penguinpistol.analysisdrawing.drawing.model.DoubleEyelid;
-import me.penguinpistol.analysisdrawing.drawing.model.EyeAndEyebrowGap;
-import me.penguinpistol.analysisdrawing.drawing.model.EyeShape;
-import me.penguinpistol.analysisdrawing.drawing.model.EyeSize;
-import me.penguinpistol.analysisdrawing.drawing.model.EyeSpacing;
-import me.penguinpistol.analysisdrawing.drawing.model.EyebrowGap;
-import me.penguinpistol.analysisdrawing.drawing.model.EyebrowLength;
-import me.penguinpistol.analysisdrawing.drawing.model.EyebrowShape;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceAsymmetry;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceHorizontalRatio;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceShape;
-import me.penguinpistol.analysisdrawing.drawing.model.FaceVerticalRatio;
-import me.penguinpistol.analysisdrawing.drawing.model.FrontCheek;
-import me.penguinpistol.analysisdrawing.drawing.model.FrontJaw;
-import me.penguinpistol.analysisdrawing.drawing.model.GoldenTriangle;
-import me.penguinpistol.analysisdrawing.drawing.model.LipMountain;
-import me.penguinpistol.analysisdrawing.drawing.model.LipTail;
-import me.penguinpistol.analysisdrawing.drawing.model.LipThickness;
-import me.penguinpistol.analysisdrawing.drawing.model.NoseLength;
-import me.penguinpistol.analysisdrawing.drawing.model.NoseWidth;
-import me.penguinpistol.analysisdrawing.drawing.model.Philtrum;
-import me.penguinpistol.analysisdrawing.drawing.model.Ptosis;
-import me.penguinpistol.analysisdrawing.drawing.model.SquareJaw;
+import me.penguinpistol.analysisdrawing.drawing.model.face.CheekBone;
+import me.penguinpistol.analysisdrawing.drawing.model.face.DoubleEyelid;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyeAndEyebrowGap;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyeShape;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyeSize;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyeSpacing;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyebrowGap;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyebrowLength;
+import me.penguinpistol.analysisdrawing.drawing.model.face.EyebrowShape;
+import me.penguinpistol.analysisdrawing.drawing.model.face.FaceAsymmetry;
+import me.penguinpistol.analysisdrawing.drawing.model.face.FaceHorizontalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.face.FaceShape;
+import me.penguinpistol.analysisdrawing.drawing.model.face.FaceVerticalRatio;
+import me.penguinpistol.analysisdrawing.drawing.model.face.FrontCheek;
+import me.penguinpistol.analysisdrawing.drawing.model.face.FrontJaw;
+import me.penguinpistol.analysisdrawing.drawing.model.face.GoldenTriangle;
+import me.penguinpistol.analysisdrawing.drawing.model.face.LipMountain;
+import me.penguinpistol.analysisdrawing.drawing.model.face.LipTail;
+import me.penguinpistol.analysisdrawing.drawing.model.face.LipThickness;
+import me.penguinpistol.analysisdrawing.drawing.model.face.NoseLength;
+import me.penguinpistol.analysisdrawing.drawing.model.face.NoseWidth;
+import me.penguinpistol.analysisdrawing.drawing.model.face.Philtrum;
+import me.penguinpistol.analysisdrawing.drawing.model.face.Ptosis;
+import me.penguinpistol.analysisdrawing.drawing.model.face.SquareJaw;
 
 public class MainViewModel extends ViewModel {
 
@@ -116,6 +116,9 @@ public class MainViewModel extends ViewModel {
 
     public List<Pair<String, Parts[]>> getSkinParts() {
         List<Pair<String, Parts[]>> items = new ArrayList<>();
+        // 피부유형
+        items.add(new Pair<>("피부유형", new Parts[] {
+        }));
 
         return items;
     }
