@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
 
@@ -52,7 +53,29 @@ public class MainActivity extends AppCompatActivity {
                 });
         });
 
-        mBinding.listModel.setAdapter(new PartsAdapter(viewModel.getParts()));
+        mBinding.tabType.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch(tab.getPosition()) {
+                    case 0:
+                        mBinding.listModel.setAdapter(new PartsAdapter(viewModel.getFaceParts()));
+                        break;
+                    case 1:
+                        mBinding.listModel.setAdapter(new PartsAdapter(viewModel.getSkinParts()));
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+        mBinding.listModel.setAdapter(new PartsAdapter(viewModel.getFaceParts()));
     }
 
     public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.ViewHolder> {

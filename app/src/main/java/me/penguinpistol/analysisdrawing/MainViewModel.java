@@ -62,8 +62,7 @@ public class MainViewModel extends ViewModel {
         }
     }
 
-
-    public List<Pair<String, Parts[]>> getParts() {
+    public List<Pair<String, Parts[]>> getFaceParts() {
         List<Pair<String, Parts[]>> items = new ArrayList<>();
         // 얼굴비율
         items.add(new Pair<>("얼굴비율", new Parts[] {
@@ -115,6 +114,11 @@ public class MainViewModel extends ViewModel {
         return items;
     }
 
+    public List<Pair<String, Parts[]>> getSkinParts() {
+        List<Pair<String, Parts[]>> items = new ArrayList<>();
+
+        return items;
+    }
 
     public static JsonObject findChildJsonObject(@Nullable JsonObject root, @Nullable String path) {
         if(root == null || path == null) {
