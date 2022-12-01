@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.view.animation.AccelerateInterpolator;
 
 import androidx.annotation.IntDef;
 
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class Shape extends BaseObject {
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({NONE, SCALE, ALPHA})
+    @IntDef(flag = true, value = {NONE, SCALE, ALPHA})
     public @interface AnimationType {}
 
     public static final int NONE = 0;
@@ -33,7 +32,7 @@ public class Shape extends BaseObject {
     private final Matrix matrix;
 
     public Shape(int color, List<PointF> points) {
-        this(color, points, ALPHA);
+        this(color, points, SCALE | ALPHA);
     }
 
     public Shape(int color, List<PointF> points, @AnimationType int animationType) {
@@ -57,8 +56,6 @@ public class Shape extends BaseObject {
             }
         }
         path.close();
-
-        interpolator = new AccelerateInterpolator();
     }
 
     @Override
@@ -67,17 +64,20 @@ public class Shape extends BaseObject {
             return;
         }
 
-        switch(animationType) {
-            case NONE:
-                break;
-            case SCALE:
-                path.computeBounds(bounds, true);
-                matrix.setScale(fraction, fraction, bounds.centerX(), bounds.centerY());
-                path.transform(matrix);
-                break;
-            case ALPHA:
-                paint.setAlpha((int)(originAlpha * fraction));
-                break;
+        if(interpolator != null) {
+            fraction = interpolator.getInterpolation(fraction);
+        }
+
+        Path path = new Path(this.path);
+
+        if((animationType & SCALE) > 0) {
+            path.computeBounds(bounds, true);
+            matrix.setScale(fraction, fraction, bounds.centerX(), bounds.centerY());
+            path.transform(matrix);
+        }
+
+        if((animationType & ALPHA) > 0) {
+            paint.setAlpha((int)(originAlpha * fraction));
         }
 
         canvas.drawPath(path, paint);
