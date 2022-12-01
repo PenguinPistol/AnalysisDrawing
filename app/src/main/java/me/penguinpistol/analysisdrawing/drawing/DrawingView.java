@@ -33,6 +33,7 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
     private ScheduledExecutorService mRenderExecutor;
     private Canvas mBufferCanvas;
     private boolean mIsRepeat;
+    private boolean mIsRender;
     private int mDrawingIndex;
     private long mStartTime;
     private long mTotalPlayTime;
@@ -85,6 +86,7 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
+        mIsRender = true;
         startDrawing(mModels);
 //        mRenderThread = new RenderThread();
 //        mRenderThread.start();
@@ -96,6 +98,13 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
+        mIsRender = false;
+
+        if(mRenderExecutor != null && !mRenderExecutor.isShutdown()) {
+            mRenderExecutor.shutdown();
+            mRenderExecutor = null;
+        }
+
         if(mOrderExecutor != null && !mOrderExecutor.isShutdown()) {
             mOrderExecutor.shutdown();
             mOrderExecutor = null;
@@ -159,7 +168,7 @@ public class DrawingView extends SurfaceView implements SurfaceHolder.Callback {
                     }
                 }, 0, 1000/60, TimeUnit.MILLISECONDS);
 
-                while(!mRenderExecutor.isTerminated());
+                while(!mRenderExecutor.isTerminated() && mIsRender);
 
                 if(mDrawingIndex == models.length && !mIsRepeat) {
                     mOrderExecutor.shutdown();
