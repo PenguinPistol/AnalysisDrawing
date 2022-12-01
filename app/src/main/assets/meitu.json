@@ -1166,7 +1166,7 @@
             625.524
           ]
         ],
-        "userImage": "http://natoo.co:8090/filepath/similar/720p_2528_2022_10_07_19_55_07_FRONT.jpg",
+        "userImage": "https://api.natoo.co/data/natoo/user/study/similar/720p_2528_2022_10_07_19_55_07_FRONT.jpg",
         "imageInfo": {
           "photoHeight": 1280,
           "photoWidth": 720
