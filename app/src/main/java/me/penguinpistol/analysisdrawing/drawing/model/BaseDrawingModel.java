@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import me.penguinpistol.analysisdrawing.drawing.DrawingConfig;
 import me.penguinpistol.analysisdrawing.drawing.Order;
@@ -227,6 +228,18 @@ public abstract class BaseDrawingModel {
             return 0;
         }
         return (float) IntStream.range(0, values.length).mapToDouble(i -> values[i]).average().orElse(0);
+    }
+
+    /**
+     * 각 점들의 x, y 좌표 평균 값으로 새로운 점 생성
+     */
+    protected PointF averagePoint(PointF... points) {
+        if(points == null || points.length == 0) {
+            return new PointF();
+        }
+        float x = (float)Stream.of(points).mapToDouble(p -> p.x).average().orElse(0);
+        float y = (float)Stream.of(points).mapToDouble(p -> p.y).average().orElse(0);
+        return new PointF(x, y);
     }
 
     /**
