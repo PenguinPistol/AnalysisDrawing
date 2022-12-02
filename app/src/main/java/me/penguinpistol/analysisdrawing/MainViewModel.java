@@ -47,6 +47,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.face.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Ptosis;
 import me.penguinpistol.analysisdrawing.drawing.model.face.SquareJaw;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.ForeheadWrinkle;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.NasolabialFold;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinType;
 
 public class MainViewModel extends ViewModel {
@@ -125,6 +126,7 @@ public class MainViewModel extends ViewModel {
         // 주름
         items.add(new Pair<>("주름", new Parts[] {
                 new Parts(ForeheadWrinkle.class, "이마주름")
+                , new Parts(NasolabialFold.class, "팔자주름")
         }));
 
         return items;
