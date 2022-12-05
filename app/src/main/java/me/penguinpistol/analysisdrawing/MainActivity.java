@@ -36,22 +36,24 @@ public class MainActivity extends AppCompatActivity {
 
         MainViewModel viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        viewModel.getMeituData(this, analysis -> {
-            Glide.with(mBinding.drawing)
-                .asBitmap()
-                .centerCrop()
-                .load(analysis.getImage())
-                .into(new CustomTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                        mBinding.drawing.setData(resource, analysis.getLandmark118(), analysis.getLandmark171(), null);
-                    }
+        viewModel.test();
 
-                    @Override
-                    public void onLoadCleared(@Nullable Drawable placeholder) {
-                    }
-                });
-        });
+//        viewModel.getMeituData(this, analysis -> {
+//            Glide.with(mBinding.drawing)
+//                .asBitmap()
+//                .centerCrop()
+//                .load(analysis.getImage())
+//                .into(new CustomTarget<Bitmap>() {
+//                    @Override
+//                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+//                        mBinding.drawing.setData(resource, analysis.getLandmark118(), analysis.getLandmark171(), null);
+//                    }
+//
+//                    @Override
+//                    public void onLoadCleared(@Nullable Drawable placeholder) {
+//                    }
+//                });
+//        });
 
         mBinding.tabType.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

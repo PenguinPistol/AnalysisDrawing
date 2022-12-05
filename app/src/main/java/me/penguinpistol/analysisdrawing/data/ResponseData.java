@@ -5,13 +5,13 @@ import androidx.annotation.NonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseData {
+public class ResponseData<T> {
     @SerializedName("code")
     private String code;
     @SerializedName("message")
     private String message;
     @SerializedName("data")
-    private JsonObject data;
+    private T data;
 
     public String getCode() {
         return code;
@@ -21,7 +21,7 @@ public class ResponseData {
         return message;
     }
 
-    public JsonObject getData() {
+    public T getData() {
         return data;
     }
 
