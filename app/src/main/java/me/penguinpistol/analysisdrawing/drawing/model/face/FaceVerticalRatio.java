@@ -73,6 +73,11 @@ public class FaceVerticalRatio extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 중정길이
+        lab_face_ratio.data.details.common.upperAndLowerFaceLength.upperAndLowerFaceRatioMiddleLength
+        // 하정길이
+        lab_face_ratio.data.details.common.upperAndLowerFaceLength.upperAndLowerFaceRatioLowLength
+         */
     }
 }

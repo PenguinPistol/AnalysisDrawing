@@ -91,6 +91,13 @@ public class EyeShape extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈각도
+        data.details.angleOfEye.angleOfEyes.left
+        data.details.angleOfEye.angleOfEyes.right
+        // 눈비율
+        data.partAllScore.pupilRatio.left
+        data.partAllScore.pupilRatio.right
+         */
     }
 }

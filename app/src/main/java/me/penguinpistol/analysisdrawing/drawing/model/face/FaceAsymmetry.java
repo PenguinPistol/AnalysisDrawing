@@ -75,18 +75,18 @@ public class FaceAsymmetry extends BaseDrawingModel {
         PointF eyeIntersection = intersection(leftEyeOuter.toPoint(), rightEyeOuter.toPoint(), faceCenterStart, faceCenterEnd);
         float eyeAngle = new Vector2(rightEyeOuter).sub(leftEyeOuter).angle() - 180;
         order2.add(new Arc(lineColor, defaultThickness, eyeIntersection, DrawingConfig.ARC_RADIUS, eyeAngle, Arc.CCW));
-        order2.add(new Text(eyeIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_TOP).offset(-20, 0));     // 이상적인 각도
-        order2.add(new Text(eyeIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.LEFT_TOP).offset(20, 0));       // 계산된 각도
+        order2.add(new Text(eyeIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_TOP).offset(-20, 0));     // 오른쪽 눈 각도
+        order2.add(new Text(eyeIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.LEFT_TOP).offset(20, 0));       // 왼쪽 눈 각도
 
-        // 입 각도
+        // 입술 각도
         PointF mouthIntersection = intersection(leftMouthOuter.toPoint(), rightMouthOuter.toPoint(), faceCenterStart, faceCenterEnd);
         float mouthAngle = new Vector2(rightMouthOuter).sub(leftMouthOuter).angle() - 180;
         order2.add(new Arc(lineColor, defaultThickness, mouthIntersection, DrawingConfig.ARC_RADIUS, mouthAngle, Arc.CW));
-        order2.add(new Text(mouthIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_TOP).offset(-20, 0));     // 이상적인 각도
-        order2.add(new Text(mouthIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.LEFT_TOP).offset(20, 0));       // 계산된 각도
+        order2.add(new Text(mouthIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.RIGHT_TOP).offset(-20, 0));     // 오른쪽 입술 각도
+        order2.add(new Text(mouthIntersection, "%.2fº", DrawingConfig.TEXT_COLOR, defaultTextSize, Text.Align.CENTER, Text.Anchor.LEFT_TOP).offset(20, 0));       // 왼쪽 입술 각도
 
         // 좌상단 텍스트
-        order2.add(getInfoTextObject("눈과 입의 평행각도차\n\n턱의 면적\nL : %.2fcm\nR : %.2fcm"));
+        order2.add(getInfoTextObject("눈과 입의 평행각도차\n??º\n턱의 면적\nL : %.2fcm\nR : %.2fcm"));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -108,6 +108,18 @@ public class FaceAsymmetry extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈과 입의 평행각도차
+        // TODO 확인필요
+        // 턱의 면적
+        lab_face_ratio.data.partAllScore.faceAsymmetryLipAngleBendAngle.left
+        lab_face_ratio.data.partAllScore.faceAsymmetryLipAngleBendAngle.right
+        // 눈 각도
+        lab_face_ratio.data.details.faceAsymmetry.eyeAngle.angle.left
+        lab_face_ratio.data.details.faceAsymmetry.eyeAngle.angle.right
+        // 입술 각도
+        lab_face_ratio.data.details.faceAsymmetry.lipAngle.angle.left
+        lab_face_ratio.data.details.faceAsymmetry.lipAngle.angle.right
+         */
     }
 }

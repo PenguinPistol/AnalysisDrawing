@@ -16,6 +16,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 코 - 코길이
+ */
 public class NoseLength extends BaseDrawingModel {
 
     public NoseLength(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
@@ -76,6 +79,9 @@ public class NoseLength extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 코길이
+        lab_nose.data.partAllScore.lengthOfNose.cm
+         */
     }
 }

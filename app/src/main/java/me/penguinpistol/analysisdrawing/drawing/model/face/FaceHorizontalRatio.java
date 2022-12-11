@@ -65,7 +65,6 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
         order2.add(new Arrow(landmark171.get(5).x, landmark171.get(48).y, landmark171.get(10).x, landmark171.get(48).y, DrawingConfig.LINE_COLOR));
         order2.add(new Arrow(landmark171.get(10).x, eyeWidthHeightArrowY, landmark171.get(15).x, eyeWidthHeightArrowY, DrawingConfig.LINE_COLOR));
 
-        // TODO Json 파싱 데이터 텍스트 출력
         // 눈높이 X 좌표
         float textX1 = average(extractCoordinates(LANDMARK_171, AXIS_X, 0, 5));
         // 눈간격 X 좌표
@@ -84,5 +83,14 @@ public class FaceHorizontalRatio extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
+        /*
+        // 가로비율
+        lab_face_ratio.data.partAllScore.fiveEqualPartsRation
+        // 눈 너비
+        lab_eyes.data.partAllScore.widthOfEAnEye.left.cm
+        lab_eyes.data.partAllScore.widthOfEAnEye.right.cm
+        // 눈 간격
+        lab_eyes.data.partAllScore.eyeDistance.cm
+         */
     }
 }

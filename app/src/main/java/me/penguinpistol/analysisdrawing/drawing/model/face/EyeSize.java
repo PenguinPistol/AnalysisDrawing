@@ -84,6 +84,13 @@ public class EyeSize extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈높이
+        data.partAllScore.heightOfAnEye.left.cm
+        data.partAllScore.heightOfAnEye.right.cm
+        // 눈너비
+        data.partAllScore.widthOfAnEye.left.cm
+        data.partAllScore.widthOfAnEye.right.cm
+         */
     }
 }

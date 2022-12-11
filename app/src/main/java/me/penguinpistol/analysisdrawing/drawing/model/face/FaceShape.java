@@ -77,7 +77,7 @@ public class FaceShape extends BaseDrawingModel {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         List<BaseObject> order2 = new ArrayList<>();
-        order2.add(getInfoTextObject("얼굴형"));
+        order2.add(getInfoTextObject("%s"));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,6 +98,9 @@ public class FaceShape extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 얼굴형
+        data.partAllScore.faceShape
+         */
     }
 }

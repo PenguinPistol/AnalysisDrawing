@@ -72,5 +72,10 @@ public class Ptosis extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
+        /*
+        // 안검하수비율
+        data.partAllScore.ptosisRatio.left
+        data.partAllScore.ptosisRatio.right
+         */
     }
 }

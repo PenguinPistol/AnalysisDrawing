@@ -16,6 +16,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 입술 - 입술산
+ */
 public class LipMountain extends BaseDrawingModel {
 
     public LipMountain(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
@@ -62,6 +65,9 @@ public class LipMountain extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        //입술산 각도
+        data.details.lipAngle
+         */
     }
 }

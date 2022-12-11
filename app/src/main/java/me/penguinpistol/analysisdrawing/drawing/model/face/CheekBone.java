@@ -96,13 +96,12 @@ public class CheekBone extends BaseDrawingModel {
     @Override
     protected void parseJson(JsonElement json) {
         /*
-        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma
         // 광대너비
-        palace.cm
+        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma.palace.cm
         // 사각턱너비
-        mandible.cm
+        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma.mandible.cm
         // 광대와 사각턱 비율
-        // ratio
+        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma.ratio
         */
     }
 }

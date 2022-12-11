@@ -83,6 +83,12 @@ public class EyebrowLength extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈썹길이
+        data.partAllScore.eyebrowLength.left.cm
+        data.partAllScore.eyebrowLength.right.cm
+        // 눈높이와 눈썹높이비율
+        // TODO 데이터 확인필요
+         */
     }
 }

@@ -73,6 +73,9 @@ public class EyebrowGap extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈썹간격
+        data.partAllScore.eyebrowDistanceLength.cm
+         */
     }
 }

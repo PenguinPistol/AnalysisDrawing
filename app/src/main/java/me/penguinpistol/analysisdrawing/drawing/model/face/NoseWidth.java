@@ -81,6 +81,9 @@ public class NoseWidth extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 코너비
+        lab_nose.data.partAllScore.widthOfNose.cm
+         */
     }
 }

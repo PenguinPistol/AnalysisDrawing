@@ -19,6 +19,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Shape;
 
+/**
+ * 윤곽 - 앞볼
+ */
 public class FrontCheek extends BaseDrawingModel {
     public FrontCheek(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         super(context, landmark118, landmark171);
@@ -61,9 +64,8 @@ public class FrontCheek extends BaseDrawingModel {
     @Override
     protected void parseJson(JsonElement json) {
         /*
-        data.details.frontCheek
         // 볼의 볼륨감 유무
-        frontCheekValue
+        data.details.frontCheek.frontCheekValue
          */
     }
 }

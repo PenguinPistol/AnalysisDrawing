@@ -92,6 +92,13 @@ public class GoldenTriangle extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 포인트
+        lab_face_ratio.data.partAllScore.goldenTriangleRatioDegree.a
+        lab_face_ratio.data.partAllScore.goldenTriangleRatioDegree.b
+        lab_face_ratio.data.partAllScore.goldenTriangleRatioDegree.c
+        // 하정길이
+        lab_face_ratio.data.details.common.upperAndLowerFaceLength.upperAndLowerFaceRatioLowLength
+         */
     }
 }

@@ -16,6 +16,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 윤곽 - 앞턱
+ */
 public class FrontJaw extends BaseDrawingModel {
 
     public FrontJaw(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
@@ -84,7 +87,7 @@ public class FrontJaw extends BaseDrawingModel {
         ??
         // 턱코길이비율(데이터없음)
         ??
-        // 턱 길이
+        // 앞턱길이
         data.details.frontChin.jawLength
          */
     }

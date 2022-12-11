@@ -102,6 +102,13 @@ public class DoubleEyelid extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        //미안거간거
+        data.details.lengthOfTheDistanceBetweenEyesAndEyebrow.lengthOfTheDistanceBetweenEyesAndEyebrowLeftCm
+        data.details.lengthOfTheDistanceBetweenEyesAndEyebrow.lengthOfTheDistanceBetweenEyesAndEyebrowRightCm
+        //쌍꺼풀유무
+        data.partAllScore.leftEyelidType
+        data.partAllScore.rightEyelidType
+         */
     }
 }

@@ -16,6 +16,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 입술 - 인중
+ */
 public class Philtrum extends BaseDrawingModel {
 
     public Philtrum(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
@@ -63,13 +66,12 @@ public class Philtrum extends BaseDrawingModel {
     @Override
     protected void parseJson(JsonElement json) {
         /*
-        data.details.philtrum.philtrumJawRatio
         // 인중길이
-        philtrums.cm
+        data.details.philtrum.philtrumJawRatio.philtrums.cm
         // 턱길이
-        jaw.cm
+        data.details.philtrum.philtrumJawRatio.jaw.cm
         // 인중턱비율
-        philtrumJawRatios.ratio
+        data.details.philtrum.philtrumJawRatio.philtrumJawRatios.ratio
          */
     }
 }

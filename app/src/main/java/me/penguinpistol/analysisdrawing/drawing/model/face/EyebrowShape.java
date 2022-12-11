@@ -94,6 +94,15 @@ public class EyebrowShape extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈썹길이
+        data.partAllScore.eyebrowLength.left.cm
+        data.partAllScore.eyebrowLength.right.cm
+        // 눈썹높이
+        data.partAllScore.eyebrowHeight.left.cm
+        data.partAllScore.eyebrowHeight.right.cm
+        // 눈썹형태
+        data.partAllScore.eyebrowShape
+         */
     }
 }

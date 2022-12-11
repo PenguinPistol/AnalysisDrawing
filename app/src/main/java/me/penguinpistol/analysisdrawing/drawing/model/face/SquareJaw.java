@@ -17,6 +17,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 윤곽 - 사각턱
+ */
 public class SquareJaw extends BaseDrawingModel {
     public SquareJaw(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         super(context, landmark118, landmark171);
@@ -95,13 +98,12 @@ public class SquareJaw extends BaseDrawingModel {
     @Override
     protected void parseJson(JsonElement json) {
         /*
-        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma
         // 광대너비
-        palace.cm
+        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma.palace.cm
         // 사각턱너비
-        mandible.cm
+        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma.mandible.cm
         // 광대와 사각턱 비율
-        // ratio
+        data.partAllScore.angularRatioOfZygomaAndLowerJawZygoma.ratio
         */
     }
 }

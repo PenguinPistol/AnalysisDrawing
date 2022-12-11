@@ -73,6 +73,13 @@ public class EyeAndEyebrowGap extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈높이
+        data.details.heightOfAnEye.heightOfAnEyeLeft.cm
+        data.details.heightOfAnEye.heightOfAnEyeRight.cm
+        // 눈과 눈썹거리(좌상단)
+        data.partAllScore.eyetoEyeBrowDistance.left.length.cm
+        data.partAllScore.eyetoEyeBrowDistance.right.length.cm
+         */
     }
 }

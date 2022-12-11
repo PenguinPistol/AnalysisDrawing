@@ -17,6 +17,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 입술 - 입꼬리
+ */
 public class LipTail extends BaseDrawingModel {
     public LipTail(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         super(context, landmark118, landmark171);
@@ -93,6 +96,12 @@ public class LipTail extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 입술너비
+        data.details.lipWidthAndConner.lipWidth.cm
+        // 입꼬리각도
+        data.partAllScore.lipTipShape.left
+        data.partAllScore.lipTipShape.right
+         */
     }
 }

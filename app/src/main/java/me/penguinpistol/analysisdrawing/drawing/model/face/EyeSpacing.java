@@ -73,6 +73,12 @@ public class EyeSpacing extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 눈너비
+        data.partAllScore.widthOfAnEye.left.cm
+        data.partAllScore.widthOfAnEye.right.cm
+        // 눈간격
+        data.partAllScore.eyeDistance
+         */
     }
 }

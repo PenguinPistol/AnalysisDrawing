@@ -84,6 +84,13 @@ public class LipThickness extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-
+        /*
+        // 윗입술
+        data.partAllScore.upperLib
+        // 아랫입술
+        data.partAllScore.lowerLib
+        // 입술비율
+        ?????
+         */
     }
 }
