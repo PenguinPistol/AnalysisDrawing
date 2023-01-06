@@ -41,18 +41,18 @@ public class NoseLength extends BaseDrawingModel {
         float lipLowerY = landmark118.get(95).y;
         float jawLowerY = landmark118.get(16).y;
 
-        order1.add(createShapeLine(horizontalStartX, eyebrowY, horizontalEndX, eyebrowY));
-        order1.add(createShapeLine(horizontalStartX, noseLowerY, horizontalEndX, noseLowerY));
-        order1.add(createShapeLine(horizontalStartX, lipUpperY, horizontalEndX, lipUpperY));
-        order1.add(createShapeLine(horizontalStartX, lipLowerY, horizontalEndX, lipLowerY));
-        order1.add(createShapeLine(horizontalStartX, jawLowerY, horizontalEndX, jawLowerY));
+        order1.add(createSharpLine(horizontalStartX, eyebrowY, horizontalEndX, eyebrowY));
+        order1.add(createSharpLine(horizontalStartX, noseLowerY, horizontalEndX, noseLowerY));
+        order1.add(createSharpLine(horizontalStartX, lipUpperY, horizontalEndX, lipUpperY));
+        order1.add(createSharpLine(horizontalStartX, lipLowerY, horizontalEndX, lipLowerY));
+        order1.add(createSharpLine(horizontalStartX, jawLowerY, horizontalEndX, jawLowerY));
 
         float verticalMargin = 35;
         float noseLeftX = landmark118.get(77).x;
         float noseRightX = landmark118.get(83).x;
 
-        order1.add(createShapeLine(noseLeftX, eyebrowY - verticalMargin, noseLeftX, jawLowerY + verticalMargin));
-        order1.add(createShapeLine(noseRightX, eyebrowY - verticalMargin, noseRightX, jawLowerY + verticalMargin));
+        order1.add(createSharpLine(noseLeftX, eyebrowY - verticalMargin, noseLeftX, jawLowerY + verticalMargin));
+        order1.add(createSharpLine(noseRightX, eyebrowY - verticalMargin, noseRightX, jawLowerY + verticalMargin));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

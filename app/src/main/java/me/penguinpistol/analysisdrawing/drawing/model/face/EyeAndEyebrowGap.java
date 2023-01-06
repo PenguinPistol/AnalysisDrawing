@@ -37,15 +37,15 @@ public class EyeAndEyebrowGap extends BaseDrawingModel {
         float leftEyeTopY = landmark118.get(53).y;
         float overLeftEyeInnerX = average(extractCoordinates(LANDMARK_118, AXIS_X, 55, 75));
         float leftEyebrowOuterX = landmark118.get(33).x;
-        order1.add(createShapeLine(leftEyebrowOuterX, leftEyebrowBottomY, overLeftEyeInnerX, leftEyebrowBottomY));
-        order1.add(createShapeLine(leftEyebrowOuterX, leftEyeTopY, overLeftEyeInnerX, leftEyeTopY));
+        order1.add(createSharpLine(leftEyebrowOuterX, leftEyebrowBottomY, overLeftEyeInnerX, leftEyebrowBottomY));
+        order1.add(createSharpLine(leftEyebrowOuterX, leftEyeTopY, overLeftEyeInnerX, leftEyeTopY));
 
         float rightEyebrowBottomY = landmark118.get(48).y;
         float rightEyeTopY = landmark118.get(63).y;
         float overRightEyeInnerX = average(extractCoordinates(LANDMARK_118, AXIS_X, 65, 85));
         float rightEyebrowOuterX = landmark118.get(46).x;
-        order1.add(createShapeLine(rightEyebrowOuterX, rightEyebrowBottomY, overRightEyeInnerX, rightEyebrowBottomY));
-        order1.add(createShapeLine(rightEyebrowOuterX, rightEyeTopY, overRightEyeInnerX, rightEyeTopY));
+        order1.add(createSharpLine(rightEyebrowOuterX, rightEyebrowBottomY, overRightEyeInnerX, rightEyebrowBottomY));
+        order1.add(createSharpLine(rightEyebrowOuterX, rightEyeTopY, overRightEyeInnerX, rightEyeTopY));
 
         order1.add(createDashLine(landmark118.get(51).x, landmark118.get(53).y, landmark118.get(51).x, landmark118.get(57).y));
         order1.add(createDashLine(landmark118.get(65).x, landmark118.get(63).y, landmark118.get(65).x, landmark118.get(67).y));

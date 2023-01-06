@@ -2,7 +2,6 @@ package me.penguinpistol.analysisdrawing.drawing.model.face;
 
 import android.content.Context;
 import android.graphics.PointF;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -40,9 +39,9 @@ public class LipThickness extends BaseDrawingModel {
         float lipMiddleY = landmark118.get(100).y;
         float lipLowerY = landmark118.get(95).y;
 
-        order1.add(createShapeLine(horizontalStartX - horizontalOffset, lipUpperY, horizontalEndX + horizontalOffset, lipUpperY));
-        order1.add(createShapeLine(horizontalStartX - horizontalOffset, lipMiddleY, horizontalEndX + horizontalOffset, lipMiddleY));
-        order1.add(createShapeLine(horizontalStartX - horizontalOffset, lipLowerY, horizontalEndX + horizontalOffset, lipLowerY));
+        order1.add(createSharpLine(horizontalStartX - horizontalOffset, lipUpperY, horizontalEndX + horizontalOffset, lipUpperY));
+        order1.add(createSharpLine(horizontalStartX - horizontalOffset, lipMiddleY, horizontalEndX + horizontalOffset, lipMiddleY));
+        order1.add(createSharpLine(horizontalStartX - horizontalOffset, lipLowerY, horizontalEndX + horizontalOffset, lipLowerY));
 
         float verticalUpperY = landmark118.get(80).y * 0.5F;
         float verticalLowerY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 11, 12, 20, 21));

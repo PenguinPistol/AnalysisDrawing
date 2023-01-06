@@ -45,13 +45,13 @@ public class NoseWidth extends BaseDrawingModel {
         float nostrilsMiddleY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 77, 83));
 
         // 가로선
-        order1.add(createShapeLine(horizontalStartX, noseStartY, horizontalEndX, noseStartY));
-        order1.add(createShapeLine(horizontalStartX, nostrilsUpperY, horizontalEndX, nostrilsUpperY));
-        order1.add(createShapeLine(horizontalStartX, nostrilsMiddleY, horizontalEndX, nostrilsMiddleY));
+        order1.add(createSharpLine(horizontalStartX, noseStartY, horizontalEndX, noseStartY));
+        order1.add(createSharpLine(horizontalStartX, nostrilsUpperY, horizontalEndX, nostrilsUpperY));
+        order1.add(createSharpLine(horizontalStartX, nostrilsMiddleY, horizontalEndX, nostrilsMiddleY));
 
         // 세로선
-        order1.add(createShapeLine(noseLeftX, verticalStartY, noseLeftX, verticalEndY));
-        order1.add(createShapeLine(noseRightX, verticalStartY, noseRightX, verticalEndY));
+        order1.add(createSharpLine(noseLeftX, verticalStartY, noseLeftX, verticalEndY));
+        order1.add(createSharpLine(noseRightX, verticalStartY, noseRightX, verticalEndY));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

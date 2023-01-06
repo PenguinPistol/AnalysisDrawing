@@ -49,8 +49,8 @@ public class LipTail extends BaseDrawingModel {
         float lipRightX = landmark118.get(92).x;
         float lipMiddleY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 86, 92));
         float lipBottomY = landmark118.get(95).y;
-        order2.add(createShapeLine(lipLeftX - horizontalMargin, lipMiddleY, lipRightX + horizontalMargin, lipMiddleY));
-        order2.add(createShapeLine(lipLeftX - horizontalMargin, lipBottomY, lipRightX + horizontalMargin, lipBottomY));
+        order2.add(createSharpLine(lipLeftX - horizontalMargin, lipMiddleY, lipRightX + horizontalMargin, lipMiddleY));
+        order2.add(createSharpLine(lipLeftX - horizontalMargin, lipBottomY, lipRightX + horizontalMargin, lipBottomY));
 
         // 양쪽 세로선
         float lipWidthGuideTopY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 93, 95, 96, 97));

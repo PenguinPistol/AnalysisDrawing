@@ -40,8 +40,8 @@ public class CheekBone extends BaseDrawingModel {
         float middleFaceTopY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 2, 30));
         float middleFaceBottomY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 77, 83));
         // 가로 실선
-        order1.add(createShapeLine(middleStartX - middleLineOffset, middleFaceTopY, middleEndX + middleLineOffset, middleFaceTopY));
-        order1.add(createShapeLine(middleStartX - middleLineOffset, middleFaceBottomY, middleEndX + middleLineOffset, middleFaceBottomY));
+        order1.add(createSharpLine(middleStartX - middleLineOffset, middleFaceTopY, middleEndX + middleLineOffset, middleFaceTopY));
+        order1.add(createSharpLine(middleStartX - middleLineOffset, middleFaceBottomY, middleEndX + middleLineOffset, middleFaceBottomY));
         // 세로 점선
         order1.add(createDashLine(middleStartX, middleFaceTopY, middleStartX, landmark118.get(80).y));
         order1.add(createDashLine(middleEndX, middleFaceTopY, middleEndX, landmark118.get(80).y));
@@ -55,21 +55,21 @@ public class CheekBone extends BaseDrawingModel {
         float lowerFaceBottomY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 11, 21));
         float lowerArrowY = average(extractCoordinates(LANDMARK_118, AXIS_Y, 12, 20));
         // 가로 실선
-        order1.add(createShapeLine(lowerStartX, lowerFaceTopY, lowerEndX, lowerFaceTopY));
-        order1.add(createShapeLine(lowerStartX, lowerFaceBottomY, lowerEndX, lowerFaceBottomY));
+        order1.add(createSharpLine(lowerStartX, lowerFaceTopY, lowerEndX, lowerFaceTopY));
+        order1.add(createSharpLine(lowerStartX, lowerFaceBottomY, lowerEndX, lowerFaceBottomY));
         // 세로 점선
         order1.add(createDashLine(lowerStartX + lowerDashOffset, lowerFaceTopY, lowerStartX + lowerDashOffset, lowerArrowY));
         order1.add(createDashLine(lowerEndX - lowerDashOffset, lowerFaceTopY, lowerEndX - lowerDashOffset, lowerArrowY));
 
         // 왼쪽 윤곽선
         PointF leftContourUpper = intersection(LANDMARK_118, 33, 46, 8, 2);
-        order1.add(createShapeLine(leftContourUpper, landmark118.get(8), Color.MAGENTA));
-        order1.add(createShapeLine(landmark118.get(8), landmark118.get(13), Color.MAGENTA));
+        order1.add(createSharpLine(leftContourUpper, landmark118.get(8), Color.MAGENTA));
+        order1.add(createSharpLine(landmark118.get(8), landmark118.get(13), Color.MAGENTA));
 
         // 오른쪽 윤곽선
         PointF rightContourUpper = intersection(LANDMARK_118, 33, 46, 24, 30);
-        order1.add(createShapeLine(rightContourUpper, landmark118.get(24), Color.MAGENTA));
-        order1.add(createShapeLine(landmark118.get(24), landmark118.get(19), Color.MAGENTA));
+        order1.add(createSharpLine(rightContourUpper, landmark118.get(24), Color.MAGENTA));
+        order1.add(createSharpLine(landmark118.get(24), landmark118.get(19), Color.MAGENTA));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

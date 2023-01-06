@@ -13,7 +13,6 @@ import com.google.gson.JsonElement;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -99,20 +98,20 @@ public abstract class BaseDrawingModel {
         return new Text(DrawingConfig.INFO_TEXT_POSITION_X, DrawingConfig.INFO_TEXT_POSITION_Y, text, DrawingConfig.LINE_COLOR, infoTextSize, align, Text.Anchor.LEFT_TOP);
     }
 
-    protected Line createShapeLine(float x1, float y1, float x2, float y2, int color) {
+    protected Line createSharpLine(float x1, float y1, float x2, float y2, int color) {
         return new Line(x1, y1, x2, y2, color, defaultThickness, Line.SHARP);
     }
 
-    protected Line createShapeLine(float x1, float y1, float x2, float y2) {
-        return createShapeLine(x1, y1, x2, y2, DrawingConfig.LINE_COLOR);
+    protected Line createSharpLine(float x1, float y1, float x2, float y2) {
+        return createSharpLine(x1, y1, x2, y2, DrawingConfig.LINE_COLOR);
     }
 
-    protected Line createShapeLine(PointF p1, PointF p2, int color) {
-        return createShapeLine(p1.x, p1.y, p2.x, p2.y, color);
+    protected Line createSharpLine(PointF p1, PointF p2, int color) {
+        return createSharpLine(p1.x, p1.y, p2.x, p2.y, color);
     }
 
-    protected Line createShapeLine(PointF p1, PointF p2) {
-        return createShapeLine(p1.x, p1.y, p2.x, p2.y);
+    protected Line createSharpLine(PointF p1, PointF p2) {
+        return createSharpLine(p1.x, p1.y, p2.x, p2.y);
     }
 
 
@@ -168,14 +167,21 @@ public abstract class BaseDrawingModel {
         return createArrow(p1.x, p1.y, p2.x, p2.y);
     }
 
+    protected Circle createCircle(float cx, float cy, float r) {
+        return new Circle(DrawingConfig.CIRCLE_OUTER_COLOR, DrawingConfig.CIRCLE_INNER_COLOR, cx, cy, r);
+    }
+
+    protected Circle createCircle(PointF cp, float r) {
+        return createCircle(cp.x, cp.y, r);
+    }
+
     protected Circle createCircle(float cx, float cy) {
-        return new Circle(DrawingConfig.CIRCLE_OUTER_COLOR, DrawingConfig.CIRCLE_INNER_COLOR, cx, cy, defaultCircleRadius);
+        return createCircle(cx, cy, defaultCircleRadius);
     }
 
     protected Circle createCircle(PointF cp) {
-        return createCircle(cp.x, cp.y);
+        return createCircle(cp.x, cp.y, defaultCircleRadius);
     }
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
