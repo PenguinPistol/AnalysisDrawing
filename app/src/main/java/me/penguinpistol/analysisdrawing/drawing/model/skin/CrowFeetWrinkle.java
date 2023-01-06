@@ -3,7 +3,6 @@ package me.penguinpistol.analysisdrawing.drawing.model.skin;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PointF;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -18,19 +17,16 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 
 /**
- * 주름 - 이마주름
+ * 주름 - 눈가주름
  */
-public class ForeheadWrinkle extends BaseDrawingModel {
-    // TODO
-    private List<List<PointF>> wrinkles;
+public class CrowFeetWrinkle extends BaseDrawingModel {
 
-    public ForeheadWrinkle(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
+    public CrowFeetWrinkle(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
         super(context, landmark118, landmark171);
     }
 
     @Override
     protected void initOrders(Context context) {
-
         overlayColor = Color.parseColor("#403047AA");
         jointLineColor = Color.parseColor("#CCFFFF00");
 
@@ -38,17 +34,7 @@ public class ForeheadWrinkle extends BaseDrawingModel {
 
         List<BaseObject> order1 = new ArrayList<>();
 
-
-        wrinkles = new ArrayList<>();
-        List<PointF> temp = new ArrayList<>();
-        temp.add(new PointF(100, 100));
-        temp.add(new PointF(50, 50));
-        temp.add(new PointF(200, 50));
-        wrinkles.add(temp);
-
-        for(List<PointF> points : wrinkles) {
-            order1.add(createJointLine(points, false));
-        }
+        // TODO 파싱한 데이터로 joint line 만들기
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,6 +43,7 @@ public class ForeheadWrinkle extends BaseDrawingModel {
 
     @Override
     protected void parseJson(JsonElement json) {
-        // lab_origin.data.details.common.skinForeheadWrinklePathPointsValue
+        // lab_origin.data.details.skinCrowFeetLeftPathPointsValue
+        // lab_origin.data.details.skinCrowFeetRightPathPointsValue
     }
 }

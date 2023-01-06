@@ -17,6 +17,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Text;
 
+/**
+ * 윤곽 - 광대뼈
+ */
 public class CheekBone extends BaseDrawingModel {
 
     public CheekBone(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {

@@ -19,6 +19,9 @@ import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 import me.penguinpistol.analysisdrawing.drawing.object.Shape;
 
+/**
+ * 피부유형 - 피부유형
+ */
 public class SkinType extends BaseDrawingModel {
 
     public SkinType(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
