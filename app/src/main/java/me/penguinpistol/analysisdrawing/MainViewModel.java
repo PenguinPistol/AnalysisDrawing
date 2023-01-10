@@ -47,6 +47,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.face.NoseWidth;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Ptosis;
 import me.penguinpistol.analysisdrawing.drawing.model.face.SquareJaw;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.Blackhead;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.CrowFeetWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.EyeWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.ForeheadWrinkle;
@@ -144,6 +145,7 @@ public class MainViewModel extends ViewModel {
         //모공
         items.add(new Pair<>("모공", new Parts[] {
                 new Parts(Pore.class, "모공")
+                , new Parts(Blackhead.class, "블랙헤드")
         }));
 
         return items;
