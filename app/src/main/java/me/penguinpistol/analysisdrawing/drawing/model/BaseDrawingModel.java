@@ -213,9 +213,16 @@ public abstract class BaseDrawingModel {
     }
 
     /**
-     * 랜드마크 포인트 특정 인덱스 리스트 추출
+     * 특정 인덱스 랜드마크 포인트 리스트 추출
      */
     protected List<PointF> extractPoints(@Landmark int landmark, int... indexes) {
+        return extractPoints(landmark, 0, 0, indexes);
+    }
+
+    /**
+     * offset 적용된 특정 인덱스 랜드마크 포인트 리스트 추출
+     */
+    protected List<PointF> extractPoints(@Landmark int landmark, float offsetX, float offsetY, int... indexes) {
         if(indexes == null) {
             return new ArrayList<>();
         }
@@ -224,11 +231,15 @@ public abstract class BaseDrawingModel {
         List<PointF> result = new ArrayList<>();
         for (int index : indexes) {
             if (index < points.size()) {
-                result.add(points.get(index));
+                PointF p = new PointF(points.get(index).x, points.get(index).y);
+                p.offset(offsetX, offsetY);
+                result.add(p);
             }
         }
         return result;
     }
+
+
 
     /**
      * float 배열 평균구하기

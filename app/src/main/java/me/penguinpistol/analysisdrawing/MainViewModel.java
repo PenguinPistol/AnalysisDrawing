@@ -50,6 +50,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.skin.AcneScar;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Blackhead;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Blemishes;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.CrowFeetWrinkle;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.DarkCircle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.EyeWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.ForeheadWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Mole;
@@ -159,6 +160,10 @@ public class MainViewModel extends ViewModel {
         items.add(new Pair<>("점", new Parts[] {
                 new Parts(Mole.class, "점")
                 , new Parts(Blemishes.class, "잡티")
+        }));
+        // 다크서클
+        items.add(new Pair<>("다크서클", new Parts[] {
+                new Parts(DarkCircle.class, "다크서클")
         }));
 
         return items;
