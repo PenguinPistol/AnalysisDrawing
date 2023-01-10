@@ -21,7 +21,6 @@ import java.util.function.Consumer;
 import java.util.regex.PatternSyntaxException;
 
 import me.penguinpistol.analysisdrawing.data.AnalysisData;
-import me.penguinpistol.analysisdrawing.data.AnalysisDataLegacy;
 import me.penguinpistol.analysisdrawing.data.ResponseData;
 import me.penguinpistol.analysisdrawing.drawing.model.face.CheekBone;
 import me.penguinpistol.analysisdrawing.drawing.model.face.DoubleEyelid;
@@ -47,11 +46,15 @@ import me.penguinpistol.analysisdrawing.drawing.model.face.NoseWidth;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Ptosis;
 import me.penguinpistol.analysisdrawing.drawing.model.face.SquareJaw;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.AcneScar;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Blackhead;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.Blemishes;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.CrowFeetWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.EyeWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.ForeheadWrinkle;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.Mole;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.NasolabialFold;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.Pimple;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Pore;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinType;
 
@@ -146,6 +149,16 @@ public class MainViewModel extends ViewModel {
         items.add(new Pair<>("모공", new Parts[] {
                 new Parts(Pore.class, "모공")
                 , new Parts(Blackhead.class, "블랙헤드")
+        }));
+        // 여드름
+        items.add(new Pair<>("여드름", new Parts[] {
+                new Parts(Pimple.class, "여드름")
+                , new Parts(AcneScar.class, "여드름자국")
+        }));
+        // 점
+        items.add(new Pair<>("점", new Parts[] {
+                new Parts(Mole.class, "점")
+                , new Parts(Blemishes.class, "잡티")
         }));
 
         return items;

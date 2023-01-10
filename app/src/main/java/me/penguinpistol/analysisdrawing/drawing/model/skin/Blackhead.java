@@ -17,6 +17,9 @@ import me.penguinpistol.analysisdrawing.drawing.Vector2;
 import me.penguinpistol.analysisdrawing.drawing.model.BaseDrawingModel;
 import me.penguinpistol.analysisdrawing.drawing.object.BaseObject;
 
+/**
+ * 모공 - 블랙헤드
+ */
 public class Blackhead extends BaseDrawingModel {
 
     public Blackhead(@NonNull Context context, @NonNull List<PointF> landmark118, @NonNull List<PointF> landmark171) {
