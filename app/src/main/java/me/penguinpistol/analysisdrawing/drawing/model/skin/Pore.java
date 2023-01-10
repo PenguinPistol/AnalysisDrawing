@@ -2,6 +2,7 @@ package me.penguinpistol.analysisdrawing.drawing.model.skin;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PathDashPathEffect;
 import android.graphics.PointF;
 
 import androidx.annotation.NonNull;
@@ -48,10 +49,10 @@ public class Pore extends BaseDrawingModel {
 
         // 나비존
         int lineColor = Color.parseColor("#66FFFFFF");
-        // TODO 나비존 외각선 그리기
-        order1.add(new Shape(fillColor,
+        Shape shape = new Shape(fillColor,
                 extractPoints(LANDMARK_171, 128, 129, 130, 131, 132, 42, 45, 148, 149, 150, 151, 152, 133, 137, 142, 146, 47, 48, 44, 126, 122, 117, 113),
-                Shape.SCALE));
+                Shape.SCALE).setStrokeStyle(lineColor, 4);
+        order1.add(shape);
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

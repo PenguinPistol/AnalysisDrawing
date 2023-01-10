@@ -5,10 +5,14 @@ import android.graphics.CornerPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathDashPathEffect;
+import android.graphics.PathEffect;
 import android.graphics.PointF;
 import android.graphics.RectF;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -30,6 +34,8 @@ public class Shape extends BaseObject {
 
     private final RectF bounds;
     private final Matrix matrix;
+
+    private Paint strokePaint;
 
     public Shape(int color, List<PointF> points) {
         this(color, points, SCALE | ALPHA);
@@ -81,5 +87,23 @@ public class Shape extends BaseObject {
         }
 
         canvas.drawPath(path, paint);
+        if(strokePaint != null) {
+            canvas.drawPath(path, strokePaint);
+        }
+    }
+
+    public Shape setStrokeStyle(@ColorInt int color, float thickness) {
+        Path borderPath = new Path();
+        borderPath.lineTo(8, 0);
+        borderPath.lineTo(8, thickness);
+        borderPath.lineTo(0, thickness);
+        borderPath.close();
+
+        strokePaint = new Paint();
+        strokePaint.setColor(color);
+        strokePaint.setStyle(Paint.Style.STROKE);
+        strokePaint.setPathEffect(new PathDashPathEffect(borderPath, 16F, 6F, PathDashPathEffect.Style.MORPH));
+//        strokePaint.setStrokeWidth(width);
+        return this;
     }
 }

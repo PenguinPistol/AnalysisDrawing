@@ -38,7 +38,7 @@ public abstract class ApiCallback<T> implements Callback<ResponseData<T>> {
             } else {
                 String apiResultCode = apiResult.getCode();
                 if(RESULT_SUCCESS.equals(apiResultCode)) {
-                    onPostResponse(apiResult.getData());
+//                    onPostResponse(apiResult.getData());
                 } else {
                     onPostFailure(call, apiResultCode, apiResult.getMessage());
                 }

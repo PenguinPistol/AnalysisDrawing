@@ -22,18 +22,18 @@ import retrofit2.Call;
 public class MainRepository {
 
     public void getAnalysisResult(int photoIdx) {
-        Call<ResponseData<JsonObject>> callMeitu = ApiClient.getApi().connectionMeitu(photoIdx);
-        callMeitu.enqueue(new ApiCallback<JsonObject>() {
-            @Override
-            public void onPostResponse(@Nullable JsonObject data) {
-
-            }
-
-            @Override
-            public void onPostFailure(@NonNull Call<ResponseData<JsonObject>> call, @NonNull String code, @Nullable String message) {
-                Log.d("PPP", code + " >> " + message);
-            }
-        });
+//        Call<ResponseData<JsonObject>> callMeitu = ApiClient.getApi().connectionMeitu(photoIdx);
+//        callMeitu.enqueue(new ApiCallback<JsonObject>() {
+//            @Override
+//            public void onPostResponse(@Nullable JsonObject data) {
+//
+//            }
+//
+//            @Override
+//            public void onPostFailure(@NonNull Call<ResponseData<JsonObject>> call, @NonNull String code, @Nullable String message) {
+//                Log.d("PPP", code + " >> " + message);
+//            }
+//        });
     }
 
 }

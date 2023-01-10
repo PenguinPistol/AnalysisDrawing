@@ -1,20 +1,28 @@
 package me.penguinpistol.analysisdrawing;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
 import androidx.lifecycle.ViewModel;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.PatternSyntaxException;
 
+import me.penguinpistol.analysisdrawing.data.AnalysisData;
 import me.penguinpistol.analysisdrawing.data.AnalysisDataLegacy;
+import me.penguinpistol.analysisdrawing.data.ResponseData;
 import me.penguinpistol.analysisdrawing.drawing.model.face.CheekBone;
 import me.penguinpistol.analysisdrawing.drawing.model.face.DoubleEyelid;
 import me.penguinpistol.analysisdrawing.drawing.model.face.EyeAndEyebrowGap;
@@ -39,8 +47,11 @@ import me.penguinpistol.analysisdrawing.drawing.model.face.NoseWidth;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Philtrum;
 import me.penguinpistol.analysisdrawing.drawing.model.face.Ptosis;
 import me.penguinpistol.analysisdrawing.drawing.model.face.SquareJaw;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.CrowFeetWrinkle;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.EyeWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.ForeheadWrinkle;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.NasolabialFold;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.Pore;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinType;
 
 // TODO 일반적인 ViewModel 로 변경하기
@@ -52,7 +63,17 @@ public class MainViewModel extends ViewModel {
         repository.getAnalysisResult(PHOTO_INDEX);
     }
 
-    public void getMeituData(Consumer<AnalysisDataLegacy> callback) {
+    public void getMeituData(Context context, Consumer<AnalysisData> callback) {
+        Gson gson = new Gson();
+        try {
+            InputStream is = context.getAssets().open("meitu.json");
+            Reader reader = new InputStreamReader(is);
+            ResponseData response = gson.fromJson(reader, ResponseData.class);
+            AnalysisData data = new AnalysisData(response.getData());
+            callback.accept(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Pair<String, Parts[]>> getFaceParts() {
@@ -117,6 +138,12 @@ public class MainViewModel extends ViewModel {
         items.add(new Pair<>("주름", new Parts[] {
                 new Parts(ForeheadWrinkle.class, "이마주름")
                 , new Parts(NasolabialFold.class, "팔자주름")
+                , new Parts(EyeWrinkle.class, "눈밑주름")
+                , new Parts(CrowFeetWrinkle.class, "눈가주름")
+        }));
+        //모공
+        items.add(new Pair<>("모공", new Parts[] {
+                new Parts(Pore.class, "모공")
         }));
 
         return items;

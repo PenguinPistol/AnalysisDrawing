@@ -13,26 +13,26 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("app/lab/newConnectionMeitu2")
-    Call<ResponseData<JsonObject>> connectionMeitu(@Field("photoIdx") int photoIdx);
+    Call<ResponseData> connectionMeitu(@Field("photoIdx") int photoIdx);
 
     /**
      * 분석
      */
     @FormUrlEncoded
     @POST("app/lab/{analysisPath}")
-    Call<ResponseData<JsonObject>> analysis(@Path("analysisPath") String analysisPath, @Field("photoIdx") int photoIdx);
+    Call<ResponseData> analysis(@Path("analysisPath") String analysisPath, @Field("photoIdx") int photoIdx);
 
     /**
      * 얼굴 총평
      */
     @FormUrlEncoded
     @POST("app/lab/allScoreForApp")
-    Call<ResponseData<JsonObject>> analysisFaceOverall(@Field("photoIdx") int photoIdx);
+    Call<ResponseData> analysisFaceOverall(@Field("photoIdx") int photoIdx);
 
     /**
      * 피부 총평
      */
     @FormUrlEncoded
     @POST("app/lab/skinAllScoreForApp")
-    Call<ResponseData<JsonObject>> analysisSkinOverall(@Field("photoIdx") int photoIdx);
+    Call<ResponseData> analysisSkinOverall(@Field("photoIdx") int photoIdx);
 }

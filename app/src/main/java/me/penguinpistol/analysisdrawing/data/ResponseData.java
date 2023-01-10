@@ -11,7 +11,7 @@ public class ResponseData<T> {
     @SerializedName("message")
     private String message;
     @SerializedName("data")
-    private T data;
+    private JsonObject data;
 
     public String getCode() {
         return code;
@@ -21,7 +21,7 @@ public class ResponseData<T> {
         return message;
     }
 
-    public T getData() {
+    public JsonObject getData() {
         return data;
     }
 
