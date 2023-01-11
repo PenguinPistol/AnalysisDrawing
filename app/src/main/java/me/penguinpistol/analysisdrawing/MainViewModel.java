@@ -57,6 +57,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.skin.Mole;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.NasolabialFold;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Pimple;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Pore;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinTone;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinType;
 
 // TODO 일반적인 ViewModel 로 변경하기
@@ -164,6 +165,10 @@ public class MainViewModel extends ViewModel {
         // 다크서클
         items.add(new Pair<>("다크서클", new Parts[] {
                 new Parts(DarkCircle.class, "다크서클")
+        }));
+        // 피부톤
+        items.add(new Pair<>("피부톤", new Parts[] {
+                new Parts(SkinTone.class, "피부톤")
         }));
 
         return items;
