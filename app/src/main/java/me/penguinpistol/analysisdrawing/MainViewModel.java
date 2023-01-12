@@ -57,6 +57,7 @@ import me.penguinpistol.analysisdrawing.drawing.model.skin.Mole;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.NasolabialFold;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Pimple;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.Pore;
+import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinAge;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinTone;
 import me.penguinpistol.analysisdrawing.drawing.model.skin.SkinType;
 
@@ -169,6 +170,10 @@ public class MainViewModel extends ViewModel {
         // 피부톤
         items.add(new Pair<>("피부톤", new Parts[] {
                 new Parts(SkinTone.class, "피부톤")
+        }));
+        // 피부나이
+        items.add(new Pair<>("피부나이", new Parts[] {
+                new Parts(SkinAge.class, "피부나이")
         }));
 
         return items;
