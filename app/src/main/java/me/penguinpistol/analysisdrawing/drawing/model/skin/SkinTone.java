@@ -26,7 +26,6 @@ public class SkinTone extends BaseDrawingModel {
 
     @Override
     protected void initOrders(Context context) {
-        overlayColor = Color.parseColor("#40C55A11");
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +35,7 @@ public class SkinTone extends BaseDrawingModel {
         float t = landmark171.get(114).y;
         float r = landmark171.get(119).x;
         float b = average(landmark171.get(119).y, landmark171.get(122).y);
-        order1.add(new ClippingRect(overlayColor, new RectF(l, t, r, b)));
+        order1.add(new ClippingRect(Color.parseColor("#40C55A11"), new RectF(l, t, r, b)));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
